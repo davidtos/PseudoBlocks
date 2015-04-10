@@ -13,6 +13,11 @@
 		6373CD231AD5A261000DE105 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6373CD221AD5A261000DE105 /* Images.xcassets */; };
 		6373CD261AD5A261000DE105 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6373CD241AD5A261000DE105 /* LaunchScreen.xib */; };
 		6373CD321AD5A261000DE105 /* PseudoBlockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6373CD311AD5A261000DE105 /* PseudoBlockTests.swift */; };
+		F58FA79E1AD7CDCC00DAB988 /* Administration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58FA79D1AD7CDCC00DAB988 /* Administration.swift */; };
+		F58FA7A01AD7CE3700DAB988 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58FA79F1AD7CE3700DAB988 /* Item.swift */; };
+		F58FA7A21AD7CFFA00DAB988 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58FA7A11AD7CFFA00DAB988 /* Tile.swift */; };
+		F58FA7A41AD7D97B00DAB988 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58FA7A31AD7D97B00DAB988 /* Map.swift */; };
+		F58FA7A61AD7D9B900DAB988 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F58FA7A51AD7D9B900DAB988 /* Player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +41,11 @@
 		6373CD2B1AD5A261000DE105 /* PseudoBlockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PseudoBlockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6373CD301AD5A261000DE105 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6373CD311AD5A261000DE105 /* PseudoBlockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PseudoBlockTests.swift; sourceTree = "<group>"; };
+		F58FA79D1AD7CDCC00DAB988 /* Administration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Administration.swift; sourceTree = "<group>"; };
+		F58FA79F1AD7CE3700DAB988 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		F58FA7A11AD7CFFA00DAB988 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
+		F58FA7A31AD7D97B00DAB988 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		F58FA7A51AD7D9B900DAB988 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +87,7 @@
 		6373CD181AD5A261000DE105 /* PseudoBlock */ = {
 			isa = PBXGroup;
 			children = (
+				F58FA79C1AD7CD9B00DAB988 /* CodeBase */,
 				6373CD1B1AD5A261000DE105 /* AppDelegate.swift */,
 				6373CD1D1AD5A261000DE105 /* ViewController.swift */,
 				6373CD1F1AD5A261000DE105 /* Main.storyboard */,
@@ -110,6 +121,18 @@
 				6373CD301AD5A261000DE105 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F58FA79C1AD7CD9B00DAB988 /* CodeBase */ = {
+			isa = PBXGroup;
+			children = (
+				F58FA79D1AD7CDCC00DAB988 /* Administration.swift */,
+				F58FA79F1AD7CE3700DAB988 /* Item.swift */,
+				F58FA7A11AD7CFFA00DAB988 /* Tile.swift */,
+				F58FA7A31AD7D97B00DAB988 /* Map.swift */,
+				F58FA7A51AD7D9B900DAB988 /* Player.swift */,
+			);
+			name = CodeBase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,7 +235,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F58FA7A01AD7CE3700DAB988 /* Item.swift in Sources */,
+				F58FA79E1AD7CDCC00DAB988 /* Administration.swift in Sources */,
+				F58FA7A21AD7CFFA00DAB988 /* Tile.swift in Sources */,
 				6373CD1E1AD5A261000DE105 /* ViewController.swift in Sources */,
+				F58FA7A61AD7D9B900DAB988 /* Player.swift in Sources */,
+				F58FA7A41AD7D97B00DAB988 /* Map.swift in Sources */,
 				6373CD1C1AD5A261000DE105 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,6 +435,7 @@
 				6373CD371AD5A261000DE105 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6373CD381AD5A261000DE105 /* Build configuration list for PBXNativeTarget "PseudoBlockTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +444,7 @@
 				6373CD3A1AD5A261000DE105 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
