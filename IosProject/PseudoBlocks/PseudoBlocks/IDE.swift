@@ -14,8 +14,8 @@ class IDE {
     let game = Game
     
     init(){
-        game = new Game()
+        //game = new Game()
         
-        Project = new Project()
+        //Project = new Project()
     }
 }
