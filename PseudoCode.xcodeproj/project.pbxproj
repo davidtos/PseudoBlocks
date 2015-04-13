@@ -413,6 +413,7 @@
 				F5904FE61AD7F9A900853636 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F5904FE71AD7F9A900853636 /* Build configuration list for PBXNativeTarget "PseudoCodeTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +422,7 @@
 				F5904FE91AD7F9A900853636 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

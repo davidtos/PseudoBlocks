@@ -17,6 +17,20 @@
 		63690B731ADA99E600C1EF11 /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 63690B721ADA99E600C1EF11 /* sprites.atlas */; };
 		63690B751ADA9F8B00C1EF11 /* Array2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63690B741ADA9F8B00C1EF11 /* Array2D.swift */; };
 		63690B771ADAA00D00C1EF11 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63690B761ADAA00D00C1EF11 /* Tile.swift */; };
+		F5EC481E1ADC43C1003FF6E2 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EC481D1ADC43C1003FF6E2 /* Project.swift */; };
+		F5EC48201ADC441F003FF6E2 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EC481F1ADC441F003FF6E2 /* Block.swift */; };
+		F5EC48231ADC453C003FF6E2 /* Walk.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EC48221ADC453C003FF6E2 /* Walk.swift */; };
+		F5EC48251ADC460B003FF6E2 /* Swim.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EC48241ADC460B003FF6E2 /* Swim.swift */; };
+		F5EC48271ADC4626003FF6E2 /* Turn.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EC48261ADC4626003FF6E2 /* Turn.swift */; };
+		F5EC48291ADC464B003FF6E2 /* Start.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EC48281ADC464B003FF6E2 /* Start.swift */; };
+		F5EC482D1ADC4692003FF6E2 /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EC482C1ADC4692003FF6E2 /* Sound.swift */; };
+		F5EC482F1ADC46CE003FF6E2 /* Blow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EC482E1ADC46CE003FF6E2 /* Blow.swift */; };
+		F5EC48331ADC4B06003FF6E2 /* IDE.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EC48321ADC4B06003FF6E2 /* IDE.swift */; };
+		F5EC48351ADC4B96003FF6E2 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EC48341ADC4B96003FF6E2 /* Game.swift */; };
+		F5EC48371ADC4C09003FF6E2 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EC48361ADC4C09003FF6E2 /* Map.swift */; };
+		F5EC48391ADC4C27003FF6E2 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EC48381ADC4C27003FF6E2 /* Player.swift */; };
+		F5EC483B1ADC4C67003FF6E2 /* Tiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EC483A1ADC4C67003FF6E2 /* Tiles.swift */; };
+		F5EC483D1ADC4C7A003FF6E2 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EC483C1ADC4C7A003FF6E2 /* Item.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +58,20 @@
 		63690B721ADA99E600C1EF11 /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
 		63690B741ADA9F8B00C1EF11 /* Array2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array2D.swift; sourceTree = "<group>"; };
 		63690B761ADAA00D00C1EF11 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
+		F5EC481D1ADC43C1003FF6E2 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		F5EC481F1ADC441F003FF6E2 /* Block.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
+		F5EC48221ADC453C003FF6E2 /* Walk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Walk.swift; sourceTree = "<group>"; };
+		F5EC48241ADC460B003FF6E2 /* Swim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swim.swift; sourceTree = "<group>"; };
+		F5EC48261ADC4626003FF6E2 /* Turn.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Turn.swift; sourceTree = "<group>"; };
+		F5EC48281ADC464B003FF6E2 /* Start.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Start.swift; sourceTree = "<group>"; };
+		F5EC482C1ADC4692003FF6E2 /* Sound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
+		F5EC482E1ADC46CE003FF6E2 /* Blow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blow.swift; sourceTree = "<group>"; };
+		F5EC48321ADC4B06003FF6E2 /* IDE.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IDE.swift; sourceTree = "<group>"; };
+		F5EC48341ADC4B96003FF6E2 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		F5EC48361ADC4C09003FF6E2 /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		F5EC48381ADC4C27003FF6E2 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		F5EC483A1ADC4C67003FF6E2 /* Tiles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tiles.swift; sourceTree = "<group>"; };
+		F5EC483C1ADC4C7A003FF6E2 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +113,7 @@
 		63690B3E1ADA90EF00C1EF11 /* PseudoBlocks */ = {
 			isa = PBXGroup;
 			children = (
+				F5EC481C1ADC430F003FF6E2 /* Classes */,
 				63690B721ADA99E600C1EF11 /* sprites.atlas */,
 				63690B411ADA90EF00C1EF11 /* AppDelegate.swift */,
 				63690B451ADA90EF00C1EF11 /* GameScene.swift */,
@@ -122,6 +151,35 @@
 				63690B5A1ADA90EF00C1EF11 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F5EC481C1ADC430F003FF6E2 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				F5EC48211ADC4520003FF6E2 /* Blocks */,
+				F5EC481D1ADC43C1003FF6E2 /* Project.swift */,
+				F5EC481F1ADC441F003FF6E2 /* Block.swift */,
+				F5EC48321ADC4B06003FF6E2 /* IDE.swift */,
+				F5EC48341ADC4B96003FF6E2 /* Game.swift */,
+				F5EC48361ADC4C09003FF6E2 /* Map.swift */,
+				F5EC48381ADC4C27003FF6E2 /* Player.swift */,
+				F5EC483A1ADC4C67003FF6E2 /* Tiles.swift */,
+				F5EC483C1ADC4C7A003FF6E2 /* Item.swift */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		F5EC48211ADC4520003FF6E2 /* Blocks */ = {
+			isa = PBXGroup;
+			children = (
+				F5EC48221ADC453C003FF6E2 /* Walk.swift */,
+				F5EC48241ADC460B003FF6E2 /* Swim.swift */,
+				F5EC48261ADC4626003FF6E2 /* Turn.swift */,
+				F5EC48281ADC464B003FF6E2 /* Start.swift */,
+				F5EC482C1ADC4692003FF6E2 /* Sound.swift */,
+				F5EC482E1ADC46CE003FF6E2 /* Blow.swift */,
+			);
+			name = Blocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,11 +283,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5EC482D1ADC4692003FF6E2 /* Sound.swift in Sources */,
+				F5EC48351ADC4B96003FF6E2 /* Game.swift in Sources */,
+				F5EC48371ADC4C09003FF6E2 /* Map.swift in Sources */,
+				F5EC48271ADC4626003FF6E2 /* Turn.swift in Sources */,
+				F5EC48291ADC464B003FF6E2 /* Start.swift in Sources */,
 				63690B461ADA90EF00C1EF11 /* GameScene.swift in Sources */,
+				F5EC48251ADC460B003FF6E2 /* Swim.swift in Sources */,
+				F5EC48201ADC441F003FF6E2 /* Block.swift in Sources */,
 				63690B751ADA9F8B00C1EF11 /* Array2D.swift in Sources */,
+				F5EC482F1ADC46CE003FF6E2 /* Blow.swift in Sources */,
+				F5EC48331ADC4B06003FF6E2 /* IDE.swift in Sources */,
+				F5EC483B1ADC4C67003FF6E2 /* Tiles.swift in Sources */,
 				63690B771ADAA00D00C1EF11 /* Tile.swift in Sources */,
+				F5EC48231ADC453C003FF6E2 /* Walk.swift in Sources */,
+				F5EC483D1ADC4C7A003FF6E2 /* Item.swift in Sources */,
 				63690B481ADA90EF00C1EF11 /* GameViewController.swift in Sources */,
 				63690B421ADA90EF00C1EF11 /* AppDelegate.swift in Sources */,
+				F5EC48391ADC4C27003FF6E2 /* Player.swift in Sources */,
+				F5EC481E1ADC43C1003FF6E2 /* Project.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,7 +377,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -342,7 +414,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -423,6 +495,7 @@
 				63690B611ADA90EF00C1EF11 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		63690B621ADA90EF00C1EF11 /* Build configuration list for PBXNativeTarget "PseudoBlocksTests" */ = {
 			isa = XCConfigurationList;
@@ -431,6 +504,7 @@
 				63690B641ADA90EF00C1EF11 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
