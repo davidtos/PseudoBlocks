@@ -11,17 +11,26 @@ struct PhysicsCategory {
 
 class GameScene: SKScene,SKPhysicsContactDelegate {
     var map = [Tile]()
-    
+    let background = SKSpriteNode(imageNamed: "ProgramBackground")
+    var StartButtonSprite = SKSpriteNode(imageNamed: "RunButton")
+    var StopButtonSprite = SKSpriteNode(imageNamed: "StopButton")
     // 1
     let player = SKSpriteNode(imageNamed: "Player")
     let bStart = SKSpriteNode(imageNamed: "bStart")
     let bLoop = SKSpriteNode(imageNamed: "bLoop")
     let bDraai = SKSpriteNode(imageNamed: "bDraai")
     
+    
+    
     override func didMoveToView(view: SKView) {
         
         physicsWorld.gravity = CGVectorMake(0, 0)
         physicsWorld.contactDelegate = self
+        
+        background.anchorPoint = CGPointMake(0.5, 0.5)
+        background.size.height = self.size.height
+        background.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
+        addChild(background)
         
         // 2
         backgroundColor = SKColor.whiteColor()
@@ -45,6 +54,23 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         }
         tile = getTile(5, row: 5)
         movePlayer(tile!)
+        SetButtons()
+    }
+    
+    func SetButtons(){
+        
+        
+        
+        var startPointHeigt : CGFloat
+        var startPointWidth : CGFloat
+        
+        startPointHeigt = size.height - (StartButtonSprite.size.height * 1.6) *  (CGFloat(NumRows))
+        startPointWidth = size.width - StartButtonSprite.size.width *  (CGFloat(NumColumns))
+        
+        StopButtonSprite.position = CGPoint(x: startPointWidth, y: startPointHeigt)
+        StartButtonSprite.position = CGPoint(x: (startPointWidth + StartButtonSprite.size.width * 1.2) , y: startPointHeigt)
+        addChild(StartButtonSprite)
+        addChild(StopButtonSprite)
     }
     
     func generateMap(){
@@ -101,11 +127,15 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
             let touchedNode = nodeAtPoint(location)
+            if(touchedNode == background){
+                return;
+            }
             if(touchedNode.physicsBody != nil){
                 if(touchedNode.physicsBody!.categoryBitMask != PhysicsCategory.phyPlayer){
                     return;
                 }
             }
+            
             touchedNode.position = location
         }
     }
