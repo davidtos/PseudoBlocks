@@ -11,33 +11,35 @@ import Foundation
 class Project {
     
     // list of block protocol objects
-    var blocks = [Block]()
+    var blocks :[Block]
+    
     
     init()
     {
-    
+        self.blocks = [Block]()
         
     }
-    
+
     // adds a newblock to the list
     func AddBlock(block: Block)
     {
-        blocks.append(NewBlock)
+        blocks.append(block)
     }
     
     func removeBlock(block: Block)
     {
+        /*
         // check if block exists in list
-        if blocks.contains(rBlock){
+        if contains(blocks,Block)
             // check is object is removed if true object is returned
-            if let removed = blocks.remove(rBlock){
+            if let removed = blocks. .remove(Block){
                 println("\(removed) is now removed from blocks")
             } else {
                 println("block not removed")
             }
-            
-        } else {
+        
+        }else {
             println("block not found")
-        }
+        }*/
     }
 }

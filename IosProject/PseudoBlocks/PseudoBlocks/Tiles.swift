@@ -10,9 +10,9 @@ import Foundation
 
 class Tiles {
     
-    let item = Item
+    let item :Item?
     
-    init(Item item)
+    init(item: Item)
     {
         self.item = item
     }

@@ -10,10 +10,10 @@ import Foundation
 
 class Map {
     
-    let player = Player
-    let tiles = [Tiles]()
+    let player :Player
+    let tiles :NSArray
     
-    init(Player p, Tile t){
+    init(p:Player,t:[Tile]){
         self.player = p
         self.tiles = t
     }
