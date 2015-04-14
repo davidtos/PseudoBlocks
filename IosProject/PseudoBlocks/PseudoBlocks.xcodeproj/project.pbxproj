@@ -17,7 +17,6 @@
 		63690B731ADA99E600C1EF11 /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 63690B721ADA99E600C1EF11 /* sprites.atlas */; };
 		63690B751ADA9F8B00C1EF11 /* Array2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63690B741ADA9F8B00C1EF11 /* Array2D.swift */; };
 		63690B771ADAA00D00C1EF11 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63690B761ADAA00D00C1EF11 /* Tile.swift */; };
-		F56657271ADD5F9D0030869F /* 01-intro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F56657261ADD5F9D0030869F /* 01-intro.mp3 */; };
 		F56657291ADD60AB0030869F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F56657281ADD60AB0030869F /* AVFoundation.framework */; };
 		F5EC481E1ADC43C1003FF6E2 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EC481D1ADC43C1003FF6E2 /* Project.swift */; };
 		F5EC48201ADC441F003FF6E2 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EC481F1ADC441F003FF6E2 /* Block.swift */; };
@@ -60,7 +59,6 @@
 		63690B721ADA99E600C1EF11 /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
 		63690B741ADA9F8B00C1EF11 /* Array2D.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array2D.swift; sourceTree = "<group>"; };
 		63690B761ADAA00D00C1EF11 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
-		F56657261ADD5F9D0030869F /* 01-intro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "01-intro.mp3"; path = "../../../../../../Desktop/01-intro.mp3"; sourceTree = "<group>"; };
 		F56657281ADD60AB0030869F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		F5EC481D1ADC43C1003FF6E2 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		F5EC481F1ADC441F003FF6E2 /* Block.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
@@ -119,7 +117,6 @@
 		63690B3E1ADA90EF00C1EF11 /* PseudoBlocks */ = {
 			isa = PBXGroup;
 			children = (
-				F56657261ADD5F9D0030869F /* 01-intro.mp3 */,
 				F5EC481C1ADC430F003FF6E2 /* Classes */,
 				63690B721ADA99E600C1EF11 /* sprites.atlas */,
 				63690B411ADA90EF00C1EF11 /* AppDelegate.swift */,
@@ -272,7 +269,6 @@
 				63690B501ADA90EF00C1EF11 /* LaunchScreen.xib in Resources */,
 				63690B4D1ADA90EF00C1EF11 /* Images.xcassets in Resources */,
 				63690B731ADA99E600C1EF11 /* sprites.atlas in Resources */,
-				F56657271ADD5F9D0030869F /* 01-intro.mp3 in Resources */,
 				63690B4B1ADA90EF00C1EF11 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

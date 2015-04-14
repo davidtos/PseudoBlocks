@@ -2,19 +2,40 @@ import SpriteKit
 let NumColumns = 6
 let NumRows = 6
 
+struct PhysicsCategory {
+    static let None      : UInt32 = 0
+    static let All       : UInt32 = UInt32.max
+    static let phyPlayer    : UInt32 = 0b1       // 1
+    static let phyTile      : UInt32 = 0b10     //2
+}
 
-class GameScene: SKScene {
-        var map = [Tile]()
+class GameScene: SKScene,SKPhysicsContactDelegate {
+    var map = [Tile]()
     
     // 1
     let player = SKSpriteNode(imageNamed: "Player")
+    let bStart = SKSpriteNode(imageNamed: "bStart")
+    let bLoop = SKSpriteNode(imageNamed: "bLoop")
+    let bDraai = SKSpriteNode(imageNamed: "bDraai")
     
     override func didMoveToView(view: SKView) {
+        
+        physicsWorld.gravity = CGVectorMake(0, 0)
+        physicsWorld.contactDelegate = self
+        
         // 2
         backgroundColor = SKColor.whiteColor()
         // 3
         player.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
         // 4
+        
+        bStart.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
+        bLoop.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
+        bDraai.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
+        
+        addChild(bStart)
+        addChild(bLoop)
+        addChild(bDraai)
         addChild(player)
         generateMap()
         var tile = getTile(0, row: 3)
@@ -29,7 +50,13 @@ class GameScene: SKScene {
     func generateMap(){
         for colmn in 0..<NumColumns{
             for row in 0..<NumRows{
-                var tile = Tile(column: colmn, row: row, cookieType: TileType.Grass, sprite: SKSpriteNode(imageNamed: "GrassTile"))
+                
+                var tempSprite = SKSpriteNode(imageNamed: "GrassTile")
+                tempSprite.physicsBody = SKPhysicsBody(rectangleOfSize: tempSprite.size) // 1
+                tempSprite.physicsBody?.dynamic = true // 2
+                tempSprite.physicsBody!.categoryBitMask = PhysicsCategory.phyTile
+                
+                var tile = Tile(column: colmn, row: row, cookieType: TileType.Grass, sprite: tempSprite)
                 var startPointWidth : CGFloat
                 var startPointHeigt : CGFloat
                 
@@ -68,6 +95,19 @@ class GameScene: SKScene {
         let actualDuration = random(min: CGFloat(2.0), max: CGFloat(4.0))
         var actionMove = SKAction.moveTo(tile.sprite.position , duration: NSTimeInterval(actualDuration))
         player.runAction(actionMove)
+    }
+    
+    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
+        for touch: AnyObject in touches {
+            let location = touch.locationInNode(self)
+            let touchedNode = nodeAtPoint(location)
+            if(touchedNode.physicsBody != nil){
+                if(touchedNode.physicsBody!.categoryBitMask != PhysicsCategory.phyPlayer){
+                    return;
+                }
+            }
+            touchedNode.position = location
+        }
     }
     
 }

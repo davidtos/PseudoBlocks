@@ -10,8 +10,8 @@ import Foundation
 
 class IDE {
     
-    let project = Project
-    let game = Game
+    let project = Project.self
+    let game = Game()
     
     init(){
         //game = new Game()
