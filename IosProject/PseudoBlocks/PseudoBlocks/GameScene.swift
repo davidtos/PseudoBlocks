@@ -83,7 +83,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
                 tempSprite.physicsBody?.dynamic = true // 2
                 tempSprite.physicsBody!.categoryBitMask = PhysicsCategory.phyTile
                 
-                var tile = Tile(column: colmn, row: row, cookieType: TileType.Grass, sprite: tempSprite)
+                var tile = Tile(column: colmn, row: row, tileType: TileType.Grass, sprite: tempSprite)
 				
                 var startPointWidth : CGFloat
                 var startPointHeigt : CGFloat

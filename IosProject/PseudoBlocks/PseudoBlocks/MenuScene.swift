@@ -6,7 +6,7 @@ class MenuScene: SKScene,SKPhysicsContactDelegate {
     let PlayButton = SKSpriteNode(imageNamed: "PlayButton")
     let ShareButton = SKSpriteNode(imageNamed: "ShareButton")
 	let reveal = SKTransition.flipHorizontalWithDuration(0.5)
-	let gameScene = GameScene(size: self.size)
+	
 	
     override func didMoveToView(view: SKView) {
         physicsWorld.gravity = CGVectorMake(0, 0)
@@ -28,12 +28,13 @@ class MenuScene: SKScene,SKPhysicsContactDelegate {
         addChild(PlayButton)
     }
     // catch a press on one of the nodes that are used as buttons
-    override func touchesMoved(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         for touch: AnyObject in touches {
             let location = (touch as! UITouch).locationInNode(self)
             let touchedNode = nodeAtPoint(location)
 			
             if PlayButton == touchedNode{
+                let gameScene = GameScene(size: self.size)
                 self.view?.presentScene(gameScene, transition: reveal)
             }
             
