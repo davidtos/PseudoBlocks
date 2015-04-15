@@ -5,6 +5,8 @@ class MenuScene: SKScene,SKPhysicsContactDelegate {
     let background = SKSpriteNode(imageNamed: "StartScreen")
     let PlayButton = SKSpriteNode(imageNamed: "PlayButton")
     let ShareButton = SKSpriteNode(imageNamed: "ShareButton")
+    let LevelsButton = SKSpriteNode(imageNamed: "LevelsButton")
+    
 	let reveal = SKTransition.flipHorizontalWithDuration(0.5)
 	
 	
@@ -22,8 +24,10 @@ class MenuScene: SKScene,SKPhysicsContactDelegate {
     // set all the buttons used in this scene
     func setButtons(){
         PlayButton.position = CGPoint(x: size.width * 0.5, y: size.height * 0.44)
-        ShareButton.position = CGPoint(x: (PlayButton.position.x + (ShareButton.size.width * 2)), y: size.height * 0.44)
+        ShareButton.position = CGPoint(x: (PlayButton.position.x + (ShareButton.size.width * 1.1)), y: size.height * 0.44)
+        LevelsButton.position = CGPoint(x: (PlayButton.position.x - (LevelsButton.size.width * 1.1)), y: size.height * 0.44)
         
+        addChild(LevelsButton)
         addChild(ShareButton)
         addChild(PlayButton)
     }

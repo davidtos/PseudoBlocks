@@ -125,12 +125,12 @@
 				63690B451ADA90EF00C1EF11 /* GameScene.swift */,
 				63690B761ADAA00D00C1EF11 /* Tile.swift */,
 				63690B741ADA9F8B00C1EF11 /* Array2D.swift */,
+				63B62A331ADDB349004507A8 /* MenuScene.swift */,
 				63690B471ADA90EF00C1EF11 /* GameViewController.swift */,
 				63690B491ADA90EF00C1EF11 /* Main.storyboard */,
 				63690B4C1ADA90EF00C1EF11 /* Images.xcassets */,
 				63690B4E1ADA90EF00C1EF11 /* LaunchScreen.xib */,
 				63690B3F1ADA90EF00C1EF11 /* Supporting Files */,
-				63B62A331ADDB349004507A8 /* MenuScene.swift */,
 			);
 			path = PseudoBlocks;
 			sourceTree = "<group>";
