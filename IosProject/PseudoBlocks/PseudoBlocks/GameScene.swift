@@ -12,6 +12,8 @@ struct PhysicsCategory {
 class GameScene: SKScene,SKPhysicsContactDelegate {
 	//contains all tiles of the playground
     var map = [Tile]()
+    var PseudoBlocks = [MySprite]()
+    
 	//Node that holds the background image
     let background = MySprite(imageNamed: "ProgramBackground")
 	//the run your code node
@@ -23,20 +25,16 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
 
     let player = MySprite(imageNamed: "Player")
     let bStart = MySprite(imageNamed: "bStart")
-    let bLoop = MySprite(imageNamed: "bLoop")
-    let bDraai = MySprite(imageNamed: "bDraai")
+    var loopFloat = CGPoint()
+    var draaiFloat = CGPoint()
     
     var admin: Project?
     
-  
-    
+
     //Screen is set to the view
     override func didMoveToView(view: SKView) {
         //no gravity
-        
         // create administartion > with scene (this)
-        
-        
         physicsWorld.gravity = CGVectorMake(0, 0)
         physicsWorld.contactDelegate = self
         
@@ -58,20 +56,85 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         }
         self.admin = Project(p: p)
         CreateBlocks()
+        SetPseudoBlocks(0)
         SetButtons()
-        
-        
-        
-        
-        
     }
     
-    func CreateBlocks(){
+    func SetPseudoBlocks(nummer : Int){
         
+        if(1 == nummer){
+            var tempBlock:MySprite
+            tempBlock = MySprite(imageNamed: "bLoop")
+            tempBlock.block = Walk(p: admin!.player)
+            tempBlock.position = loopFloat
+            tempBlock.physicsBody = SKPhysicsBody(rectangleOfSize: bStart.size)
+            tempBlock.physicsBody?.dynamic = true // 2
+            tempBlock.physicsBody!.categoryBitMask = PhysicsCategory.phyTile
+            tempBlock.physicsBody?.contactTestBitMask = PhysicsCategory.phyTile // 4
+            tempBlock.physicsBody?.collisionBitMask = PhysicsCategory.None
+            tempBlock.physicsBody?.usesPreciseCollisionDetection = true
+            tempBlock.physicsBody?.allowsRotation = false
+            tempBlock.physicsBody?.angularVelocity = 0
+            PseudoBlocks.append(tempBlock)
+            addChild(tempBlock)
+        }
+        else if(2 == nummer){
+            var tempBlock:MySprite
+            tempBlock = MySprite(imageNamed: "bDraai")
+            tempBlock.block = Turn(p: admin!.player, newWalkingDirection: WalkDirection.right)
+            tempBlock.position = draaiFloat
+            tempBlock.physicsBody = SKPhysicsBody(rectangleOfSize: bStart.size)
+            tempBlock.physicsBody?.dynamic = true // 2
+            tempBlock.physicsBody!.categoryBitMask = PhysicsCategory.phyTile
+            tempBlock.physicsBody?.contactTestBitMask = PhysicsCategory.phyTile // 4
+            tempBlock.physicsBody?.collisionBitMask = PhysicsCategory.None
+            tempBlock.physicsBody?.usesPreciseCollisionDetection = true
+            tempBlock.physicsBody?.allowsRotation = false
+            tempBlock.physicsBody?.angularVelocity = 0
+            PseudoBlocks.append(tempBlock)
+            addChild(tempBlock)
+        }
+        else{
+            for amount in 0...1{
+                var tempBlock:MySprite
+                
+                if(amount == 0)
+                {
+                    tempBlock = MySprite(imageNamed: "bLoop")
+                    tempBlock.block = Walk(p: admin!.player)
+                    loopFloat = CGPoint(x: size.width * 0.9 , y: size.height * CGFloat(amount + 1) * 0.1 )
+                    tempBlock.position = loopFloat
+                }
+                else
+                {
+                    tempBlock = MySprite(imageNamed: "bDraai")
+                    tempBlock.block = Turn(p: admin!.player, newWalkingDirection: WalkDirection.right)
+                   draaiFloat = CGPoint(x: size.width * 0.9 , y: size.height * CGFloat(amount + 1) * 0.1 )
+                    tempBlock.position = draaiFloat
+                }
+                
+                tempBlock.physicsBody = SKPhysicsBody(rectangleOfSize: bStart.size)
+                tempBlock.physicsBody?.dynamic = true // 2
+                tempBlock.physicsBody!.categoryBitMask = PhysicsCategory.phyTile
+                tempBlock.physicsBody?.contactTestBitMask = PhysicsCategory.phyTile // 4
+                tempBlock.physicsBody?.collisionBitMask = PhysicsCategory.None
+                tempBlock.physicsBody?.usesPreciseCollisionDetection = true
+                tempBlock.physicsBody?.allowsRotation = false
+                tempBlock.physicsBody?.angularVelocity = 0
+                var tempfloat = size.height * CGFloat(amount + 1)
+                
+                tempBlock.position = CGPoint(x: size.width * 0.9 , y: tempfloat * 0.1 )
+                PseudoBlocks.append(tempBlock)
+                addChild(tempBlock)
+                
+            }
+        }
+    }
+    
+    
+    func CreateBlocks(){
         // temp positions for the buttons
         bStart.position = CGPoint(x: size.width * 0.1, y: size.height * 0.4)
-        bLoop.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
-        bDraai.position = CGPoint(x: size.width * 0.1, y: size.height * 0.6)
         
         bStart.physicsBody = SKPhysicsBody(rectangleOfSize: bStart.size)
         bStart.physicsBody?.dynamic = true // 2
@@ -81,39 +144,14 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         bStart.physicsBody?.usesPreciseCollisionDetection = true
         bStart.physicsBody?.allowsRotation = false
         bStart.physicsBody?.angularVelocity = 0
-
-        bLoop.physicsBody = SKPhysicsBody(rectangleOfSize: bLoop.size)
-        bLoop.physicsBody?.dynamic = true // 2
-        bLoop.physicsBody!.categoryBitMask = PhysicsCategory.phyTile
-        bLoop.physicsBody?.contactTestBitMask = PhysicsCategory.phyTile // 4
-        bLoop.physicsBody?.collisionBitMask = PhysicsCategory.None
-        bLoop.physicsBody?.usesPreciseCollisionDetection = true
-        bLoop.physicsBody?.allowsRotation = false
-        bLoop.physicsBody?.angularVelocity = 0
-        bLoop.block = Walk(p: admin!.player)
         
-        
-        bDraai.physicsBody = SKPhysicsBody(rectangleOfSize: bLoop.size)
-        bDraai.physicsBody?.dynamic = true // 2
-        bDraai.physicsBody!.categoryBitMask = PhysicsCategory.phyTile
-        bDraai.physicsBody?.contactTestBitMask = PhysicsCategory.phyTile // 4
-        bDraai.physicsBody?.collisionBitMask = PhysicsCategory.None
-        bDraai.physicsBody?.usesPreciseCollisionDetection = true
-        bDraai.physicsBody?.allowsRotation = false
-        bDraai.physicsBody?.angularVelocity = 0
-        
-        addChild(bStart)
-        addChild(bLoop)
-        addChild(bDraai)
-        
+        addChild(bStart)        
     }
     
     func projectileDidCollideWithMonster(firstBody : MySprite, SecondBody : MySprite) {
         // Create joint between two objects
-        
         firstBody.position.x = SecondBody.position.x
         firstBody.position.y = SecondBody.position.y - firstBody.size.height
-        
         
         var myJoint = SKPhysicsJointPin.jointWithBodyA(SecondBody.physicsBody, bodyB: firstBody.physicsBody, anchor: CGPoint(x: CGRectGetMaxX(SecondBody.frame), y: CGRectGetMaxY(firstBody.frame)))
         
@@ -232,14 +270,28 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             {
                 return;
             }
-            
             touchedNode.position = location
+            var node = touchedNode as! MySprite
+            
+            if location.x < size.width / 1.6 {
+                
+                
+                if(node.block is Walk && node.DangerZone == false){
+                    SetPseudoBlocks(1)
+                }
+                else if(node.block is Turn && node.DangerZone == false){
+                    SetPseudoBlocks(2)
+                }
+                node.DangerZone = true
+            }
+            if location.x > size.width / 1.6 && node.DangerZone{
+                touchedNode.removeFromParent()
+            }
         }
     }
     
     func StartPressed(){
-        println("1")
-        bLoop.block?.start()
+
     }
     
     func StopPressed()

@@ -10,10 +10,11 @@ import Foundation
 import SpriteKit
 
 class MySprite: SKSpriteNode {
-   var MyJoints = [SKPhysicsJointPin]()
-   var block = Block?()
-   var ChildSprite = MySprite?()
-   var ParentSprite = MySprite?()
+    var MyJoints = [SKPhysicsJointPin]()
+    var block = Block?()
+    var ChildSprite = MySprite?()
+    var ParentSprite = MySprite?()
+    var DangerZone = false;
     
     
 }
