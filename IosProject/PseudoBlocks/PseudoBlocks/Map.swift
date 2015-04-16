@@ -13,7 +13,7 @@ class Map {
     let player :Player
     let tiles :NSArray
     
-    init(p:Player, t:[Tile]){
+    init(p:Player,t:[Tile]){
         self.player = p
         self.tiles = t
     }

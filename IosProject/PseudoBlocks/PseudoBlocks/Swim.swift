@@ -39,7 +39,6 @@ class Swim: Block {
     func stop()
     {
         ResetMaxAccel()
-        motionManager.stopAccelerometerUpdates()
     }
     
     func ResetMaxAccel()
@@ -65,6 +64,6 @@ class Swim: Block {
             curMaxAccelZ = acceleration.z
         }
         
-        println("X:\(curMaxAccelX) - Y:\(curMaxAccelY) - Z:\(curMaxAccelZ)")
+        
     }
 }
