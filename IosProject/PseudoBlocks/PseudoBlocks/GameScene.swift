@@ -12,7 +12,6 @@ struct PhysicsCategory {
 class GameScene: SKScene,SKPhysicsContactDelegate {
 	//contains all tiles of the playground
     var map = [Tile]()
-    var PseudoBlocks = [MySprite]()
     
 	//Node that holds the background image
     let background = MySprite(imageNamed: "ProgramBackground")
@@ -75,7 +74,6 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             tempBlock.physicsBody?.usesPreciseCollisionDetection = true
             tempBlock.physicsBody?.allowsRotation = false
             tempBlock.physicsBody?.angularVelocity = 0
-            PseudoBlocks.append(tempBlock)
             addChild(tempBlock)
         }
         else if(2 == nummer){
@@ -91,7 +89,6 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             tempBlock.physicsBody?.usesPreciseCollisionDetection = true
             tempBlock.physicsBody?.allowsRotation = false
             tempBlock.physicsBody?.angularVelocity = 0
-            PseudoBlocks.append(tempBlock)
             addChild(tempBlock)
         }
         else{
@@ -124,7 +121,6 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
                 var tempfloat = size.height * CGFloat(amount + 1)
                 
                 tempBlock.position = CGPoint(x: size.width * 0.9 , y: tempfloat * 0.1 )
-                PseudoBlocks.append(tempBlock)
                 addChild(tempBlock)
                 
             }
