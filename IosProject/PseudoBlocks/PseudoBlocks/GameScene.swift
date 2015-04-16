@@ -69,8 +69,6 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         bStart.physicsBody?.usesPreciseCollisionDetection = true
         bStart.physicsBody?.allowsRotation = false
         bStart.physicsBody?.angularVelocity = 0
-        bStart.block = Sound()
-        bStart.block?.start()
 
         bLoop.physicsBody = SKPhysicsBody(rectangleOfSize: bLoop.size)
         bLoop.physicsBody?.dynamic = true // 2
