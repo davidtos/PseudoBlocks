@@ -38,15 +38,9 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         background.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
         background.zPosition = -1
         addChild(background)
-
-		// temp positions for the buttons
-        bStart.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
-        bLoop.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
-        bDraai.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
-        // add the buttons
-        addChild(bStart)
-        addChild(bLoop)
-        addChild(bDraai)
+        
+        CreateBlocks()
+        
         addChild(player)
 		//create a map
         generateMap()
@@ -57,6 +51,30 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             player.zPosition = 1
         }
         SetButtons()
+    }
+    
+    func CreateBlocks(){
+        
+        // temp positions for the buttons
+        bStart.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
+        bLoop.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
+        bDraai.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
+        
+        bStart.physicsBody = SKPhysicsBody(rectangleOfSize: bStart.size)
+        bStart.physicsBody?.dynamic = true // 2
+        bStart.physicsBody!.categoryBitMask = PhysicsCategory.phyTile
+        
+        bLoop.physicsBody = SKPhysicsBody(rectangleOfSize: bLoop.size)
+        bLoop.physicsBody?.dynamic = true // 2
+        bLoop.physicsBody!.categoryBitMask = PhysicsCategory.phyTile
+        
+        bDraai.physicsBody = SKPhysicsBody(rectangleOfSize: bLoop.size)
+        bDraai.physicsBody?.dynamic = true // 2
+        bDraai.physicsBody!.categoryBitMask = PhysicsCategory.phyTile
+        
+        addChild(bStart)
+        addChild(bLoop)
+        addChild(bDraai)
     }
     
 	// sets all the buttons for this screen
@@ -83,9 +101,9 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             for row in 0..<NumRows{
                 
                 var tempSprite = SKSpriteNode(imageNamed: "GrassTile")
-                tempSprite.physicsBody = SKPhysicsBody(rectangleOfSize: tempSprite.size) // 1
-                tempSprite.physicsBody?.dynamic = true // 2
-                tempSprite.physicsBody!.categoryBitMask = PhysicsCategory.phyTile
+                //tempSprite.physicsBody = SKPhysicsBody(rectangleOfSize: tempSprite.size) // 1
+                //tempSprite.physicsBody?.dynamic = true // 2
+                //tempSprite.physicsBody!.categoryBitMask = PhysicsCategory.phyTile
                 
                 var tile = Tile(column: colmn, row: row, tileType: TileType.Grass, sprite: tempSprite)
 				
@@ -139,7 +157,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
                 return;
             }
             if(touchedNode.physicsBody != nil){
-                if(touchedNode.physicsBody!.categoryBitMask != PhysicsCategory.phyPlayer){
+                if(touchedNode.physicsBody!.categoryBitMask != PhysicsCategory.phyTile){
                     return;
                 }
             }
@@ -173,7 +191,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
                 let reveal = SKTransition.doorsCloseHorizontalWithDuration(0.5)
                 self.view?.presentScene(menuScene, transition: reveal)
             default:
-                let touchedNode = nodeAtPoint(location)
+                return;
             }
         }
         
