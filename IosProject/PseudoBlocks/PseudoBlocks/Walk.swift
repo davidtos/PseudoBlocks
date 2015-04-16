@@ -18,26 +18,33 @@ class Walk: Block {
     }
     
     func start() {
+        println("c:\(player.tile.column) - r \(player.tile.row)")
+        println(self.player.derection.description)
         // todo
         switch player.derection{
+            
         case WalkDirection.right:
-            var tile = player.scene.getTile(1, row: 3)
+            var tile = player.scene.getTile(player.tile.column + 1, row: player.tile.row)
             player.scene.movePlayer(tile!)
+            println("1c:\(player.tile.column) - r \(player.tile.row)")
 
             break
         case WalkDirection.up:
-            var tile = player.scene.getTile(1, row: 3)
+            var tile = player.scene.getTile(player.tile.column, row: player.tile.row + 1)
             player.scene.movePlayer(tile!)
+             println("2c:\(player.tile.column) - r \(player.tile.row)")
             
             break
         case WalkDirection.down:
-            var tile = player.scene.getTile(1, row: 3)
+            var tile = player.scene.getTile(player.tile.column, row: player.tile.row - 1)
             player.scene.movePlayer(tile!)
+             println("3c:\(player.tile.column) - r \(player.tile.row)")
             
             break
         case WalkDirection.left:
-            var tile = player.scene.getTile(1, row: 3)
+            var tile = player.scene.getTile(player.tile.column - 1, row: player.tile.row)
             player.scene.movePlayer(tile!)
+             println("4c:\(player.tile.column) - r \(player.tile.row)")
             
             break
         default:

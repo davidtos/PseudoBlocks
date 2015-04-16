@@ -11,7 +11,16 @@ import Foundation
 
 class Turn: Block {
     
+    var player:Player
+    var nextWD:WalkDirection
+    
+    init(p:Player,newWalkingDirection:WalkDirection)
+    {
+        self.player = p
+        self.nextWD = newWalkingDirection
+    }
+    
     func start() {
-        // todo
+        self.player.setDirection(self.nextWD)
     }
 }
