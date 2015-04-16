@@ -13,25 +13,24 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
 	//contains all tiles of the playground
     var map = [Tile]()
 	//Node that holds the background image
-    let background = SKSpriteNode(imageNamed: "ProgramBackground")
+    let background = MySprite(imageNamed: "ProgramBackground")
 	//the run your code node
-    let StartButtonSprite = SKSpriteNode(imageNamed: "RunButton")
+    let StartButtonSprite = MySprite(imageNamed: "RunButton")
 	//the stop your code node
-    let StopButtonSprite = SKSpriteNode(imageNamed: "StopButton")
+    let StopButtonSprite = MySprite(imageNamed: "StopButton")
     //the back button
-    let BackButtonSprite = SKSpriteNode(imageNamed: "BackButton")
-    
-    
-    
-    let player = SKSpriteNode(imageNamed: "Player")
-    let bStart = SKSpriteNode(imageNamed: "bStart")
-    let bLoop = SKSpriteNode(imageNamed: "bLoop")
-    let bDraai = SKSpriteNode(imageNamed: "bDraai")
+    let BackButtonSprite = MySprite(imageNamed: "BackButton")
+
+    let player = MySprite(imageNamed: "Player")
+    let bStart = MySprite(imageNamed: "bStart")
+    let bLoop = MySprite(imageNamed: "bLoop")
+    let bDraai = MySprite(imageNamed: "bDraai")
     
     
     //Screen is set to the view
     override func didMoveToView(view: SKView) {
         //no gravity
+        
         physicsWorld.gravity = CGVectorMake(0, 0)
         physicsWorld.contactDelegate = self
         
@@ -70,8 +69,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         bStart.physicsBody?.usesPreciseCollisionDetection = true
         bStart.physicsBody?.allowsRotation = false
         bStart.physicsBody?.angularVelocity = 0
-        
-        
+
         bLoop.physicsBody = SKPhysicsBody(rectangleOfSize: bLoop.size)
         bLoop.physicsBody?.dynamic = true // 2
         bLoop.physicsBody!.categoryBitMask = PhysicsCategory.phyTile
@@ -95,7 +93,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         addChild(bDraai)
     }
     
-    func projectileDidCollideWithMonster(firstBody : SKSpriteNode, SecondBody : SKSpriteNode) {
+    func projectileDidCollideWithMonster(firstBody : MySprite, SecondBody : MySprite) {
         // Create joint between two objects
         
         firstBody.position.x = SecondBody.position.x
@@ -106,8 +104,13 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         
         var myJoint1 = SKPhysicsJointPin.jointWithBodyA(SecondBody.physicsBody, bodyB: firstBody.physicsBody, anchor: CGPoint(x: CGRectGetMinX(SecondBody.frame), y: CGRectGetMinY(firstBody.frame)))
         
+        firstBody.MyJoints.append(myJoint)
+        firstBody.MyJoints.append(myJoint1)
         self.physicsWorld.addJoint(myJoint)
         self.physicsWorld.addJoint(myJoint1)
+        
+        firstBody.ParentSprite = SecondBody
+        SecondBody.ChildSprite = firstBody
     }
     
     func didBeginContact(contact: SKPhysicsContact) {
@@ -127,7 +130,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         if ((firstBody.categoryBitMask == PhysicsCategory.phyTile) &&
             (secondBody.categoryBitMask == PhysicsCategory.phyTile)) {
                 
-                projectileDidCollideWithMonster(firstBody.node as! SKSpriteNode, SecondBody: secondBody.node as! SKSpriteNode)
+                projectileDidCollideWithMonster(firstBody.node as! MySprite, SecondBody: secondBody.node as! MySprite)
         }
         
     }
@@ -155,7 +158,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         for colmn in 0..<NumColumns{
             for row in 0..<NumRows{
                 
-                var tempSprite = SKSpriteNode(imageNamed: "GrassTile")
+                var tempSprite = MySprite(imageNamed: "GrassTile")
                 var tile = Tile(column: colmn, row: row, tileType: TileType.Grass, sprite: tempSprite)
 				
                 var startPointWidth : CGFloat
@@ -246,6 +249,12 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
                 let reveal = SKTransition.doorsCloseHorizontalWithDuration(0.5)
                 self.view?.presentScene(menuScene, transition: reveal)
             default:
+                var node = touchedNode as! MySprite
+                for joint in node.MyJoints
+                {
+                    self.physicsWorld.removeJoint(joint)
+                    node.ParentSprite?.ChildSprite = nil
+                }
                 return
             }
         }
