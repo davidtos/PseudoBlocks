@@ -18,6 +18,8 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     let StartButtonSprite = SKSpriteNode(imageNamed: "RunButton")
 	//the stop your code node
     let StopButtonSprite = SKSpriteNode(imageNamed: "StopButton")
+    //the back button
+    let BackButtonSprite = SKSpriteNode(imageNamed: "BackButton")
 
     let player = SKSpriteNode(imageNamed: "Player")
     let bStart = SKSpriteNode(imageNamed: "bStart")
@@ -63,12 +65,14 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         var startPointWidth : CGFloat
 		
         //calculate position of the buttons
-        startPointHeigt = size.height - (StartButtonSprite.size.height * 1.6) *  (CGFloat(NumRows))
-        startPointWidth = size.width - StartButtonSprite.size.width *  (CGFloat(NumColumns))
+        startPointHeigt = size.height - (StartButtonSprite.size.height * 0.6)
+        startPointWidth = size.width - StartButtonSprite.size.width * 2.5
 		
         StopButtonSprite.position = CGPoint(x: startPointWidth, y: startPointHeigt)
-        StartButtonSprite.position = CGPoint(x: (startPointWidth + StartButtonSprite.size.width * 1.2) , y: startPointHeigt)
-		
+        StartButtonSprite.position = CGPoint(x: (startPointWidth + StartButtonSprite.size.width * 1.4) , y: startPointHeigt)
+        BackButtonSprite.position = CGPoint(x:(BackButtonSprite.size.width * 0.6) , y: startPointHeigt)
+        
+		addChild(BackButtonSprite)
         addChild(StartButtonSprite)
         addChild(StopButtonSprite)
     }
@@ -88,7 +92,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
                 var startPointWidth : CGFloat
                 var startPointHeigt : CGFloat
                 
-                startPointHeigt = size.height - tile.sprite.size.height *  (CGFloat(NumRows) - CGFloat(row))
+                startPointHeigt = (size.height - tile.sprite.size.height * 0.9) - tile.sprite.size.height *  (CGFloat(NumRows) - CGFloat(row))
                 startPointWidth = size.width - tile.sprite.size.width *  (CGFloat(NumColumns) - CGFloat(colmn))
                 
                 tile.sprite.position = CGPoint(x: startPointWidth, y: startPointHeigt)
@@ -142,6 +146,37 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             
             touchedNode.position = location
         }
+    }
+    
+    func StartPressed(){
+        
+    }
+    
+    func StopPressed()
+    {
+        
+    }
+    
+    // catch a press on one of the nodes that are used as buttons
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        for touch: AnyObject in touches {
+            let location = (touch as! UITouch).locationInNode(self)
+            let touchedNode = nodeAtPoint(location)
+            
+            switch touchedNode{
+            case StartButtonSprite:
+                StartPressed()
+            case StopButtonSprite:
+                StopPressed()
+            case BackButtonSprite:
+                let menuScene = MenuScene(size: self.size)
+                let reveal = SKTransition.doorsCloseHorizontalWithDuration(0.5)
+                self.view?.presentScene(menuScene, transition: reveal)
+            default:
+                let touchedNode = nodeAtPoint(location)
+            }
+        }
+        
     }
     
 }

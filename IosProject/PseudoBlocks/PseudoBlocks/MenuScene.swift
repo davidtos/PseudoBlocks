@@ -7,7 +7,7 @@ class MenuScene: SKScene,SKPhysicsContactDelegate {
     let ShareButton = SKSpriteNode(imageNamed: "ShareButton")
     let LevelsButton = SKSpriteNode(imageNamed: "LevelsButton")
     
-	let reveal = SKTransition.flipHorizontalWithDuration(0.5)
+	let reveal = SKTransition.doorsOpenHorizontalWithDuration(0.5)
 	
 	
     override func didMoveToView(view: SKView) {
