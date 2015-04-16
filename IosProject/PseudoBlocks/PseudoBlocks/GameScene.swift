@@ -256,6 +256,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
                 {
                     self.physicsWorld.removeJoint(joint)
                     node.ParentSprite?.ChildSprite = nil
+                    node.ParentSprite = nil
                 }
                 return
             }
