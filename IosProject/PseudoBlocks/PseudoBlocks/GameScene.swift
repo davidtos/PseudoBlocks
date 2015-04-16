@@ -45,23 +45,25 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         background.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
         background.zPosition = -1
         addChild(background)
-        
-        CreateBlocks()
-        
-        addChild(player)
-		//create a map
         generateMap()
+        var p = Player(sc: self,t: self.getTile(0, row: 3)!)
+        addChild(player)
+        //create a map
+        
         var tile = getTile(0, row: 3)
         if(tile != nil){
             player.position = tile!.sprite.position
-			//set player to foreground
+            //set player to foreground
             player.zPosition = 1
         }
+        self.admin = Project(p: p)
+        CreateBlocks()
         SetButtons()
         
         
-        var p = Player(sc: self,t: self.getTile(0, row: 3)!)
-        self.admin = Project(p: p)
+        
+        
+        
     }
     
     func CreateBlocks(){
@@ -128,7 +130,6 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     
     func didBeginContact(contact: SKPhysicsContact) {
      
-        // 1
         var firstBody: SKPhysicsBody
         var secondBody: SKPhysicsBody
         if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
@@ -139,7 +140,6 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             secondBody = contact.bodyA
         }
         
-        // 2
         if ((firstBody.categoryBitMask == PhysicsCategory.phyTile) &&
             (secondBody.categoryBitMask == PhysicsCategory.phyTile)) {
                 
