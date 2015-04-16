@@ -19,8 +19,8 @@
 		63690B771ADAA00D00C1EF11 /* Tile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63690B761ADAA00D00C1EF11 /* Tile.swift */; };
 		63B62A341ADDB349004507A8 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B62A331ADDB349004507A8 /* MenuScene.swift */; };
 		F5404E921ADFDF06001E630A /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5404E911ADFDF06001E630A /* CoreMotion.framework */; };
+		F5404E981ADFFB6C001E630A /* 01-intro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F5404E971ADFFB6C001E630A /* 01-intro.mp3 */; };
 		F56657291ADD60AB0030869F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F56657281ADD60AB0030869F /* AVFoundation.framework */; };
-		F597A0091ADFCF86000A1187 /* 01-intro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F597A0081ADFCF86000A1187 /* 01-intro.mp3 */; };
 		F5EC481E1ADC43C1003FF6E2 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EC481D1ADC43C1003FF6E2 /* Project.swift */; };
 		F5EC48201ADC441F003FF6E2 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EC481F1ADC441F003FF6E2 /* Block.swift */; };
 		F5EC48231ADC453C003FF6E2 /* Walk.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EC48221ADC453C003FF6E2 /* Walk.swift */; };
@@ -64,8 +64,8 @@
 		63690B761ADAA00D00C1EF11 /* Tile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tile.swift; sourceTree = "<group>"; };
 		63B62A331ADDB349004507A8 /* MenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		F5404E911ADFDF06001E630A /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		F5404E971ADFFB6C001E630A /* 01-intro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "01-intro.mp3"; sourceTree = "<group>"; };
 		F56657281ADD60AB0030869F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		F597A0081ADFCF86000A1187 /* 01-intro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "01-intro.mp3"; path = "../../../../../../Desktop/01-intro.mp3"; sourceTree = "<group>"; };
 		F5EC481D1ADC43C1003FF6E2 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		F5EC481F1ADC441F003FF6E2 /* Block.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
 		F5EC48221ADC453C003FF6E2 /* Walk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Walk.swift; sourceTree = "<group>"; };
@@ -168,9 +168,9 @@
 		F597A0071ADFCF6B000A1187 /* Includes */ = {
 			isa = PBXGroup;
 			children = (
+				F5404E971ADFFB6C001E630A /* 01-intro.mp3 */,
 				F5404E911ADFDF06001E630A /* CoreMotion.framework */,
 				F56657281ADD60AB0030869F /* AVFoundation.framework */,
-				F597A0081ADFCF86000A1187 /* 01-intro.mp3 */,
 			);
 			name = Includes;
 			sourceTree = "<group>";
@@ -287,7 +287,7 @@
 				63690B501ADA90EF00C1EF11 /* LaunchScreen.xib in Resources */,
 				63690B4D1ADA90EF00C1EF11 /* Images.xcassets in Resources */,
 				63690B731ADA99E600C1EF11 /* sprites.atlas in Resources */,
-				F597A0091ADFCF86000A1187 /* 01-intro.mp3 in Resources */,
+				F5404E981ADFFB6C001E630A /* 01-intro.mp3 in Resources */,
 				63690B4B1ADA90EF00C1EF11 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
