@@ -8,10 +8,23 @@
 
 import Foundation
 
+enum WalkDirection: Int {
+    case Unknown = 0, up,down,right,left
+}
+
+
 class Player {
     
-    init()
+    var scene:GameScene
+    var tile: Tile
+    var derection:WalkDirection
+    
+    
+    init(sc:GameScene,t:Tile)
     {
-        
+        self.scene = sc
+        self.tile = t
+        self.derection = WalkDirection.right
     }
+    
 }

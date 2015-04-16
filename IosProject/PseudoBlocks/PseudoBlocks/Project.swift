@@ -11,17 +11,19 @@ import Foundation
 class Project {
     
     // list of block protocol objects
-    var blocks :[Block]
+    //var blocks :[Block]
     
     // var : player
+    var player:Player
     
     // para scene
-    init()
+    init(p:Player)
     {
-        self.blocks = [Block]()
+        //self.blocks = [Block]()
+        self.player = p
         
     }
-
+/*
     // adds a newblock to the list
     func AddBlock(block: Block)
     {
@@ -44,7 +46,7 @@ class Project {
             println("block not found")
         }*/
     }
-    
+    */
     func ExecuteBlocks(runBlocks: [Block])
     {
         

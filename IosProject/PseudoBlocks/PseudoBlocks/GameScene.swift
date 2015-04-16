@@ -26,12 +26,16 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     let bLoop = MySprite(imageNamed: "bLoop")
     let bDraai = MySprite(imageNamed: "bDraai")
     
+    var admin: Project?
+    
+  
     
     //Screen is set to the view
     override func didMoveToView(view: SKView) {
         //no gravity
         
         // create administartion > with scene (this)
+        
         
         physicsWorld.gravity = CGVectorMake(0, 0)
         physicsWorld.contactDelegate = self
@@ -54,6 +58,10 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             player.zPosition = 1
         }
         SetButtons()
+        
+        
+        var p = Player(sc: self,t: self.getTile(0, row: 3)!)
+        self.admin = Project(p: p)
     }
     
     func CreateBlocks(){
@@ -80,6 +88,8 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         bLoop.physicsBody?.usesPreciseCollisionDetection = true
         bLoop.physicsBody?.allowsRotation = false
         bLoop.physicsBody?.angularVelocity = 0
+        bLoop.block = Walk(p: admin!.player)
+        
         
         bDraai.physicsBody = SKPhysicsBody(rectangleOfSize: bLoop.size)
         bDraai.physicsBody?.dynamic = true // 2
@@ -93,6 +103,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         addChild(bStart)
         addChild(bLoop)
         addChild(bDraai)
+        
     }
     
     func projectileDidCollideWithMonster(firstBody : MySprite, SecondBody : MySprite) {
@@ -227,7 +238,8 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     }
     
     func StartPressed(){
-        
+        println("1")
+        bLoop.block?.start()
     }
     
     func StopPressed()
