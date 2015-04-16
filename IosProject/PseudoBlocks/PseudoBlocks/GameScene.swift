@@ -20,7 +20,9 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     let StopButtonSprite = SKSpriteNode(imageNamed: "StopButton")
     //the back button
     let BackButtonSprite = SKSpriteNode(imageNamed: "BackButton")
-
+    
+    
+    
     let player = SKSpriteNode(imageNamed: "Player")
     let bStart = SKSpriteNode(imageNamed: "bStart")
     let bLoop = SKSpriteNode(imageNamed: "bLoop")
@@ -56,25 +58,78 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     func CreateBlocks(){
         
         // temp positions for the buttons
-        bStart.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
+        bStart.position = CGPoint(x: size.width * 0.1, y: size.height * 0.4)
         bLoop.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
-        bDraai.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
+        bDraai.position = CGPoint(x: size.width * 0.1, y: size.height * 0.6)
         
         bStart.physicsBody = SKPhysicsBody(rectangleOfSize: bStart.size)
         bStart.physicsBody?.dynamic = true // 2
         bStart.physicsBody!.categoryBitMask = PhysicsCategory.phyTile
+        bStart.physicsBody?.contactTestBitMask = PhysicsCategory.phyTile // 4
+        bStart.physicsBody?.collisionBitMask = PhysicsCategory.None
+        bStart.physicsBody?.usesPreciseCollisionDetection = true
+        bStart.physicsBody?.allowsRotation = false
+        bStart.physicsBody?.angularVelocity = 0
+        
         
         bLoop.physicsBody = SKPhysicsBody(rectangleOfSize: bLoop.size)
         bLoop.physicsBody?.dynamic = true // 2
         bLoop.physicsBody!.categoryBitMask = PhysicsCategory.phyTile
+        bLoop.physicsBody?.contactTestBitMask = PhysicsCategory.phyTile // 4
+        bLoop.physicsBody?.collisionBitMask = PhysicsCategory.None
+        bLoop.physicsBody?.usesPreciseCollisionDetection = true
+        bLoop.physicsBody?.allowsRotation = false
+        bLoop.physicsBody?.angularVelocity = 0
         
         bDraai.physicsBody = SKPhysicsBody(rectangleOfSize: bLoop.size)
         bDraai.physicsBody?.dynamic = true // 2
         bDraai.physicsBody!.categoryBitMask = PhysicsCategory.phyTile
+        bDraai.physicsBody?.contactTestBitMask = PhysicsCategory.phyTile // 4
+        bDraai.physicsBody?.collisionBitMask = PhysicsCategory.None
+        bDraai.physicsBody?.usesPreciseCollisionDetection = true
+        bDraai.physicsBody?.allowsRotation = false
+        bDraai.physicsBody?.angularVelocity = 0
         
         addChild(bStart)
         addChild(bLoop)
         addChild(bDraai)
+    }
+    
+    func projectileDidCollideWithMonster(firstBody : SKSpriteNode, SecondBody : SKSpriteNode) {
+        // Create joint between two objects
+        
+        firstBody.position.x = SecondBody.position.x
+        firstBody.position.y = SecondBody.position.y - firstBody.size.height
+        
+        
+        var myJoint = SKPhysicsJointPin.jointWithBodyA(SecondBody.physicsBody, bodyB: firstBody.physicsBody, anchor: CGPoint(x: CGRectGetMaxX(SecondBody.frame), y: CGRectGetMaxY(firstBody.frame)))
+        
+        var myJoint1 = SKPhysicsJointPin.jointWithBodyA(SecondBody.physicsBody, bodyB: firstBody.physicsBody, anchor: CGPoint(x: CGRectGetMinX(SecondBody.frame), y: CGRectGetMinY(firstBody.frame)))
+        
+        self.physicsWorld.addJoint(myJoint)
+        self.physicsWorld.addJoint(myJoint1)
+    }
+    
+    func didBeginContact(contact: SKPhysicsContact) {
+     
+        // 1
+        var firstBody: SKPhysicsBody
+        var secondBody: SKPhysicsBody
+        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+            firstBody = contact.bodyA
+            secondBody = contact.bodyB
+        } else {
+            firstBody = contact.bodyB
+            secondBody = contact.bodyA
+        }
+        
+        // 2
+        if ((firstBody.categoryBitMask == PhysicsCategory.phyTile) &&
+            (secondBody.categoryBitMask == PhysicsCategory.phyTile)) {
+                
+                projectileDidCollideWithMonster(firstBody.node as! SKSpriteNode, SecondBody: secondBody.node as! SKSpriteNode)
+        }
+        
     }
     
 	// sets all the buttons for this screen
@@ -101,10 +156,6 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             for row in 0..<NumRows{
                 
                 var tempSprite = SKSpriteNode(imageNamed: "GrassTile")
-                //tempSprite.physicsBody = SKPhysicsBody(rectangleOfSize: tempSprite.size) // 1
-                //tempSprite.physicsBody?.dynamic = true // 2
-                //tempSprite.physicsBody!.categoryBitMask = PhysicsCategory.phyTile
-                
                 var tile = Tile(column: colmn, row: row, tileType: TileType.Grass, sprite: tempSprite)
 				
                 var startPointWidth : CGFloat
@@ -161,6 +212,10 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
                     return;
                 }
             }
+            else
+            {
+                return;
+            }
             
             touchedNode.position = location
         }
@@ -191,10 +246,8 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
                 let reveal = SKTransition.doorsCloseHorizontalWithDuration(0.5)
                 self.view?.presentScene(menuScene, transition: reveal)
             default:
-                return;
+                return
             }
         }
-        
     }
-    
 }
