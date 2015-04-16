@@ -56,7 +56,7 @@ class Blow: Block {
         println("url : \(url)")
         var error: NSError?
         
-        audioRecorder = AVAudioRecorder(URL:url, settings: recordSettings, error: &error)
+        audioRecorder = AVAudioRecorder(URL:url, settings: recordSettings as [NSObject : AnyObject], error: &error)
         if let e = error {
             println(e.localizedDescription)
         } else {

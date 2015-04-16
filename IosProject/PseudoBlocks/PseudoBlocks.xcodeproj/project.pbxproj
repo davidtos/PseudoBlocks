@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6336F6401ADFEEE4003225F5 /* MySprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6336F63F1ADFEEE4003225F5 /* MySprite.swift */; };
 		63690B421ADA90EF00C1EF11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63690B411ADA90EF00C1EF11 /* AppDelegate.swift */; };
 		63690B461ADA90EF00C1EF11 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63690B451ADA90EF00C1EF11 /* GameScene.swift */; };
 		63690B481ADA90EF00C1EF11 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63690B471ADA90EF00C1EF11 /* GameViewController.swift */; };
@@ -20,7 +21,6 @@
 		63B62A341ADDB349004507A8 /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B62A331ADDB349004507A8 /* MenuScene.swift */; };
 		F5404E921ADFDF06001E630A /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5404E911ADFDF06001E630A /* CoreMotion.framework */; };
 		F56657291ADD60AB0030869F /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F56657281ADD60AB0030869F /* AVFoundation.framework */; };
-		F597A0091ADFCF86000A1187 /* 01-intro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F597A0081ADFCF86000A1187 /* 01-intro.mp3 */; };
 		F5EC481E1ADC43C1003FF6E2 /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EC481D1ADC43C1003FF6E2 /* Project.swift */; };
 		F5EC48201ADC441F003FF6E2 /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EC481F1ADC441F003FF6E2 /* Block.swift */; };
 		F5EC48231ADC453C003FF6E2 /* Walk.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5EC48221ADC453C003FF6E2 /* Walk.swift */; };
@@ -48,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6336F63F1ADFEEE4003225F5 /* MySprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySprite.swift; sourceTree = "<group>"; };
 		63690B3C1ADA90EF00C1EF11 /* PseudoBlocks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PseudoBlocks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63690B401ADA90EF00C1EF11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		63690B411ADA90EF00C1EF11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -65,7 +66,6 @@
 		63B62A331ADDB349004507A8 /* MenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		F5404E911ADFDF06001E630A /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		F56657281ADD60AB0030869F /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		F597A0081ADFCF86000A1187 /* 01-intro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "01-intro.mp3"; path = "../../../../../../Desktop/01-intro.mp3"; sourceTree = "<group>"; };
 		F5EC481D1ADC43C1003FF6E2 /* Project.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		F5EC481F1ADC441F003FF6E2 /* Block.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Block.swift; sourceTree = "<group>"; };
 		F5EC48221ADC453C003FF6E2 /* Walk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Walk.swift; sourceTree = "<group>"; };
@@ -133,6 +133,7 @@
 				63B62A331ADDB349004507A8 /* MenuScene.swift */,
 				63690B471ADA90EF00C1EF11 /* GameViewController.swift */,
 				63690B491ADA90EF00C1EF11 /* Main.storyboard */,
+				6336F63F1ADFEEE4003225F5 /* MySprite.swift */,
 				63690B4C1ADA90EF00C1EF11 /* Images.xcassets */,
 				63690B4E1ADA90EF00C1EF11 /* LaunchScreen.xib */,
 				63690B3F1ADA90EF00C1EF11 /* Supporting Files */,
@@ -170,7 +171,6 @@
 			children = (
 				F5404E911ADFDF06001E630A /* CoreMotion.framework */,
 				F56657281ADD60AB0030869F /* AVFoundation.framework */,
-				F597A0081ADFCF86000A1187 /* 01-intro.mp3 */,
 			);
 			name = Includes;
 			sourceTree = "<group>";
@@ -287,7 +287,6 @@
 				63690B501ADA90EF00C1EF11 /* LaunchScreen.xib in Resources */,
 				63690B4D1ADA90EF00C1EF11 /* Images.xcassets in Resources */,
 				63690B731ADA99E600C1EF11 /* sprites.atlas in Resources */,
-				F597A0091ADFCF86000A1187 /* 01-intro.mp3 in Resources */,
 				63690B4B1ADA90EF00C1EF11 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -318,6 +317,7 @@
 				F5EC482F1ADC46CE003FF6E2 /* Blow.swift in Sources */,
 				F5EC48331ADC4B06003FF6E2 /* IDE.swift in Sources */,
 				F5EC483B1ADC4C67003FF6E2 /* Tiles.swift in Sources */,
+				6336F6401ADFEEE4003225F5 /* MySprite.swift in Sources */,
 				63690B771ADAA00D00C1EF11 /* Tile.swift in Sources */,
 				F5EC48231ADC453C003FF6E2 /* Walk.swift in Sources */,
 				F5EC483D1ADC4C7A003FF6E2 /* Item.swift in Sources */,
