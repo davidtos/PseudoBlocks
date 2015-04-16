@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>EC938A99-8B88-4EA1-B4DB-7CE49505773D</string>
 	<key>IDESourceControlProjectName</key>
-	<string>PseudoBlocks</string>
+	<string>project</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>D5BB9D956A5BD7BF4B8B59D65C5036E9D0462E3A</key>
 		<string>https://github.com/davidtos/PseudoBlocks.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>IosProject/PseudoBlocks/PseudoBlocks.xcodeproj</string>
+	<string>IosProject/PseudoBlocks/PseudoBlocks.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>D5BB9D956A5BD7BF4B8B59D65C5036E9D0462E3A</key>
