@@ -13,7 +13,7 @@ import AVFoundation
 class Sound: Block {
     
     
-    var AudioURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("SnesMusic", ofType: "mp3")!)
+    var AudioURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("01-intro", ofType: "mp3")!)
     
     var AudioPlayer = AVAudioPlayer()
     
