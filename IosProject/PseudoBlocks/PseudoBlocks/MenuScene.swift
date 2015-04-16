@@ -39,7 +39,9 @@ class MenuScene: SKScene,SKPhysicsContactDelegate {
 			
             if PlayButton == touchedNode{
                 let gameScene = GameScene(size: self.size)
+                
                 self.view?.presentScene(gameScene, transition: reveal)
+                
             }
             
         }

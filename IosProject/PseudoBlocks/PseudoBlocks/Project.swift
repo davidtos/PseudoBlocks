@@ -13,7 +13,9 @@ class Project {
     // list of block protocol objects
     var blocks :[Block]
     
+    // var : player
     
+    // para scene
     init()
     {
         self.blocks = [Block]()
