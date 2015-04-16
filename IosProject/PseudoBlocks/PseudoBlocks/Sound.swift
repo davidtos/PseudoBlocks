@@ -13,19 +13,22 @@ import AVFoundation
 class Sound: Block {
     
     
-    var ButtonAudioURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("SnesMusic", ofType: "mp3")!)
+    var AudioURL = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("SnesMusic", ofType: "mp3")!)
     
     var AudioPlayer = AVAudioPlayer()
     
     func start() {
-        // todo
+        AudioPlayer = AVAudioPlayer(contentsOfURL: AudioURL, error: nil)
+        self.PlaySound()
+        usleep(10)
+        self.StopSound()
     }
 
     func PlaySound(){
         AudioPlayer.play()
     }
     
-    func StopPlay()
+    func StopSound()
     {
         AudioPlayer.stop()
         AudioPlayer.currentTime = 0;
