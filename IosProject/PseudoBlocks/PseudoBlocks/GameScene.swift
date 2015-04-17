@@ -23,9 +23,10 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     let BackButtonSprite = MySprite(imageNamed: "BackButton")
 
     let player = MySprite(imageNamed: "Player")
-    let bStart = MySprite(imageNamed: "bStart")
+    let bStart = MySprite(imageNamed: "Start")
     var loopFloat = CGPoint()
     var draaiFloat = CGPoint()
+    var GeluidFloat = CGPoint()
     
     var admin: Project?
     
@@ -63,61 +64,56 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         
         if(1 == nummer){
             var tempBlock:MySprite
-            tempBlock = MySprite(imageNamed: "bLoop")
+            tempBlock = MySprite(imageNamed: "Loop")
             tempBlock.block = Walk(p: admin!.player)
             tempBlock.position = loopFloat
-            tempBlock.physicsBody = SKPhysicsBody(rectangleOfSize: bStart.size)
-            tempBlock.physicsBody?.dynamic = true // 2
-            tempBlock.physicsBody!.categoryBitMask = PhysicsCategory.phyTile
-            tempBlock.physicsBody?.contactTestBitMask = PhysicsCategory.phyTile // 4
-            tempBlock.physicsBody?.collisionBitMask = PhysicsCategory.None
-            tempBlock.physicsBody?.usesPreciseCollisionDetection = true
-            tempBlock.physicsBody?.allowsRotation = false
-            tempBlock.physicsBody?.angularVelocity = 0
+            SetPhysicsPseudoBlocks(tempBlock)
             addChild(tempBlock)
         }
         else if(2 == nummer){
             var tempBlock:MySprite
-            tempBlock = MySprite(imageNamed: "bDraai")
-            tempBlock.block = Turn(p: admin!.player, newWalkingDirection: WalkDirection.right)
+            tempBlock = MySprite(imageNamed: "Draai")
+            tempBlock.block = Turn(p: admin!.player, newWalkingDirection: WalkDirection.down)
             tempBlock.position = draaiFloat
-            tempBlock.physicsBody = SKPhysicsBody(rectangleOfSize: bStart.size)
-            tempBlock.physicsBody?.dynamic = true // 2
-            tempBlock.physicsBody!.categoryBitMask = PhysicsCategory.phyTile
-            tempBlock.physicsBody?.contactTestBitMask = PhysicsCategory.phyTile // 4
-            tempBlock.physicsBody?.collisionBitMask = PhysicsCategory.None
-            tempBlock.physicsBody?.usesPreciseCollisionDetection = true
-            tempBlock.physicsBody?.allowsRotation = false
-            tempBlock.physicsBody?.angularVelocity = 0
+            SetPhysicsPseudoBlocks(tempBlock)
+            addChild(tempBlock)
+        }
+        else if(3 == nummer){
+            var tempBlock:MySprite
+            tempBlock = MySprite(imageNamed: "Geluid")
+            tempBlock.block =  Sound()
+            tempBlock.position = draaiFloat
+            SetPhysicsPseudoBlocks(tempBlock)
             addChild(tempBlock)
         }
         else{
-            for amount in 0...1{
+            for amount in 0...2{
                 var tempBlock:MySprite
                 
                 if(amount == 0)
                 {
-                    tempBlock = MySprite(imageNamed: "bLoop")
+                    tempBlock = MySprite(imageNamed: "Loop")
                     tempBlock.block = Walk(p: admin!.player)
                     loopFloat = CGPoint(x: size.width * 0.9 , y: size.height * CGFloat(amount + 1) * 0.1 )
                     tempBlock.position = loopFloat
                 }
+                else if(amount == 1)
+                {
+                    tempBlock = MySprite(imageNamed: "Geluid")
+                    tempBlock.block = Sound()
+                        GeluidFloat = CGPoint(x: size.width * 0.9 , y: size.height * CGFloat(amount + 1) * 0.1 )
+                    tempBlock.position = GeluidFloat
+                }
                 else
                 {
-                    tempBlock = MySprite(imageNamed: "bDraai")
-                    tempBlock.block = Turn(p: admin!.player, newWalkingDirection: WalkDirection.right)
+                    tempBlock = MySprite(imageNamed: "Draai")
+                    tempBlock.block = Turn(p: admin!.player, newWalkingDirection: WalkDirection.down)
                    draaiFloat = CGPoint(x: size.width * 0.9 , y: size.height * CGFloat(amount + 1) * 0.1 )
                     tempBlock.position = draaiFloat
                 }
+               
                 
-                tempBlock.physicsBody = SKPhysicsBody(rectangleOfSize: bStart.size)
-                tempBlock.physicsBody?.dynamic = true // 2
-                tempBlock.physicsBody!.categoryBitMask = PhysicsCategory.phyTile
-                tempBlock.physicsBody?.contactTestBitMask = PhysicsCategory.phyTile // 4
-                tempBlock.physicsBody?.collisionBitMask = PhysicsCategory.None
-                tempBlock.physicsBody?.usesPreciseCollisionDetection = true
-                tempBlock.physicsBody?.allowsRotation = false
-                tempBlock.physicsBody?.angularVelocity = 0
+                SetPhysicsPseudoBlocks(tempBlock)
                 var tempfloat = size.height * CGFloat(amount + 1)
                 
                 tempBlock.position = CGPoint(x: size.width * 0.9 , y: tempfloat * 0.1 )
@@ -131,17 +127,21 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     func CreateBlocks(){
         // temp positions for the buttons
         bStart.position = CGPoint(x: size.width * 0.1, y: size.height * 0.4)
-        
-        bStart.physicsBody = SKPhysicsBody(rectangleOfSize: bStart.size)
-        bStart.physicsBody?.dynamic = true // 2
-        bStart.physicsBody!.categoryBitMask = PhysicsCategory.phyTile
-        bStart.physicsBody?.contactTestBitMask = PhysicsCategory.phyTile // 4
-        bStart.physicsBody?.collisionBitMask = PhysicsCategory.None
-        bStart.physicsBody?.usesPreciseCollisionDetection = true
-        bStart.physicsBody?.allowsRotation = false
-        bStart.physicsBody?.angularVelocity = 0
-        
+        SetPhysicsPseudoBlocks(bStart)
         addChild(bStart)        
+    }
+    
+    func SetPhysicsPseudoBlocks(tb : MySprite)
+    {
+        tb.physicsBody = SKPhysicsBody(rectangleOfSize: bStart.size)
+        tb.physicsBody?.dynamic = true // 2
+        tb.physicsBody!.categoryBitMask = PhysicsCategory.phyTile
+        tb.physicsBody?.contactTestBitMask = PhysicsCategory.phyTile // 4
+        tb.physicsBody?.collisionBitMask = PhysicsCategory.None
+        tb.physicsBody?.usesPreciseCollisionDetection = true
+        tb.physicsBody?.allowsRotation = false
+        tb.physicsBody?.angularVelocity = 0
+        
     }
     
     func projectileDidCollideWithMonster(firstBody : MySprite, SecondBody : MySprite) {
@@ -278,6 +278,9 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
                 else if(node.block is Turn && node.DangerZone == false){
                     SetPseudoBlocks(2)
                 }
+                else if(node.block is Sound && node.DangerZone == false){
+                    SetPseudoBlocks(3)
+                }
                 node.DangerZone = true
             }
             if location.x > size.width / 1.6 && node.DangerZone{
@@ -287,7 +290,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     }
     
     func StartPressed(){
-
+            admin?.runBlocks(bStart)
     }
     
     func StopPressed()
@@ -311,13 +314,16 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
                 let reveal = SKTransition.doorsCloseHorizontalWithDuration(0.5)
                 self.view?.presentScene(menuScene, transition: reveal)
             default:
-                var node = touchedNode as! MySprite
-                for joint in node.MyJoints
-                {
-                    self.physicsWorld.removeJoint(joint)
-                    node.ParentSprite?.ChildSprite = nil
-                    node.ParentSprite = nil
+                if(touchedNode is MySprite){
+                    var node = touchedNode as! MySprite
+                    for joint in node.MyJoints
+                    {
+                        self.physicsWorld.removeJoint(joint)
+                        node.ParentSprite?.ChildSprite = nil
+                        node.ParentSprite = nil
+                    }
                 }
+                
                 return
             }
         }

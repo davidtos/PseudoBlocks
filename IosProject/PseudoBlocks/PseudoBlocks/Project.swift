@@ -19,6 +19,16 @@ class Project {
         
     }
 
+    func runBlocks(child:MySprite){
+        
+        child.block?.start()
+        if(child.ChildSprite != nil)
+        {
+            runBlocks(child.ChildSprite!)
+        }
+        
+    }
+    
     func ExecuteBlocks()
     {
         
