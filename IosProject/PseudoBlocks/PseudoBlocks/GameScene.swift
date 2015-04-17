@@ -149,9 +149,9 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         firstBody.position.x = SecondBody.position.x
         firstBody.position.y = SecondBody.position.y - firstBody.size.height
         
-        var myJoint = SKPhysicsJointPin.jointWithBodyA(SecondBody.physicsBody, bodyB: firstBody.physicsBody, anchor: CGPoint(x: CGRectGetMaxX(SecondBody.frame), y: CGRectGetMaxY(firstBody.frame)))
+        var myJoint = SKPhysicsJointPin.jointWithBodyA(firstBody.physicsBody, bodyB: SecondBody.physicsBody, anchor: CGPoint(x: CGRectGetMaxX(SecondBody.frame), y: CGRectGetMaxY(firstBody.frame)))
         
-        var myJoint1 = SKPhysicsJointPin.jointWithBodyA(SecondBody.physicsBody, bodyB: firstBody.physicsBody, anchor: CGPoint(x: CGRectGetMinX(SecondBody.frame), y: CGRectGetMinY(firstBody.frame)))
+        var myJoint1 = SKPhysicsJointPin.jointWithBodyA(firstBody.physicsBody, bodyB: SecondBody.physicsBody, anchor: CGPoint(x: CGRectGetMinX(SecondBody.frame), y: CGRectGetMinY(firstBody.frame)))
         
         firstBody.MyJoints.append(myJoint)
         firstBody.MyJoints.append(myJoint1)
