@@ -18,7 +18,7 @@ class Walk: Block {
     }
     
     func start() {
-        println("c:\(player.tile.column) - r \(player.tile.row)")
+       // println("c:\(player.tile.column) - r \(player.tile.row)")
         
         var tile :Tile
         
@@ -27,25 +27,25 @@ class Walk: Block {
         case WalkDirection.right:
             tile = player.scene.getTile(player.tile.column + 1, row: player.tile.row)!
             player.scene.movePlayer(tile)
-            println("1c:\(player.tile.column) - r \(player.tile.row)")
+            //println("1c:\(player.tile.column) - r \(player.tile.row)")
 
             break
         case WalkDirection.up:
             tile = player.scene.getTile(player.tile.column, row: player.tile.row + 1)!
             player.scene.movePlayer(tile)
-             println("2c:\(player.tile.column) - r \(player.tile.row)")
+            // println("2c:\(player.tile.column) - r \(player.tile.row)")
             
             break
         case WalkDirection.down:
             tile = player.scene.getTile(player.tile.column, row: player.tile.row - 1)!
             player.scene.movePlayer(tile)
-             println("3c:\(player.tile.column) - r \(player.tile.row)")
+            // println("3c:\(player.tile.column) - r \(player.tile.row)")
             
             break
         case WalkDirection.left:
             tile = player.scene.getTile(player.tile.column - 1, row: player.tile.row)!
             player.scene.movePlayer(tile)
-             println("4c:\(player.tile.column) - r \(player.tile.row)")
+            // println("4c:\(player.tile.column) - r \(player.tile.row)")
             
             break
         default:

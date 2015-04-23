@@ -21,8 +21,6 @@ class Turn: Block {
     }
     
     func start() {
-        println("----\(self.nextWD.description)")
         self.player.setDirection(self.nextWD)
-        println("----\(self.nextWD.description)")
     }
 }

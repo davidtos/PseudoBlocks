@@ -19,14 +19,29 @@ class Project {
         
     }
 
+    
+    
     func runBlocks(child:MySprite){
-        
+        // start uitvoeren van blok
         child.block?.start()
         if(child.ChildSprite != nil)
         {
-            runBlocks(child.ChildSprite!)
+            if(child.block == nil || child.ChildSprite?.block is Turn)
+            {
+                // wacht niet
+                self.runBlocks(child.ChildSprite!)
+            }
+            else
+            {
+                // wacht 3 seconde met door gaan
+                let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(3 * Double(NSEC_PER_SEC)))
+                dispatch_after(delayTime, dispatch_get_main_queue()) {
+                    println("next block executed")
+                    
+                    self.runBlocks(child.ChildSprite!) // << recursie
+                }
+            }
         }
-        
     }
     
     func ExecuteBlocks()
