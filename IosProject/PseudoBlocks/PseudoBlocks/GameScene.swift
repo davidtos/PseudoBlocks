@@ -81,7 +81,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         else if(3 == nummer){
             var tempBlock:MySprite
             tempBlock = MySprite(imageNamed: "Geluid")
-            tempBlock.block =  Blow()
+            tempBlock.block =  Sound()
             tempBlock.position = draaiFloat
             SetPhysicsPseudoBlocks(tempBlock)
             addChild(tempBlock)
@@ -100,7 +100,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
                 else if(amount == 1)
                 {
                     tempBlock = MySprite(imageNamed: "Geluid")
-                    tempBlock.block = Blow()
+                    tempBlock.block = Sound()
                         GeluidFloat = CGPoint(x: size.width * 0.9 , y: size.height * CGFloat(amount + 1) * 0.1 )
                     tempBlock.position = GeluidFloat
                 }
@@ -278,7 +278,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
                 else if(node.block is Turn && node.DangerZone == false){
                     SetPseudoBlocks(2)
                 }
-                else if(node.block is Blow && node.DangerZone == false){
+                else if(node.block is Sound && node.DangerZone == false){
                     SetPseudoBlocks(3)
                 }
                 node.DangerZone = true
