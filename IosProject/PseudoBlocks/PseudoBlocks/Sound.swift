@@ -20,8 +20,14 @@ class Sound: Block {
     func start() {
         AudioPlayer = AVAudioPlayer(contentsOfURL: AudioURL, error: nil)
         self.PlaySound()
-        usleep(10)
-        self.StopSound()
+        
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW,
+            Int64(5 * Double(NSEC_PER_SEC)))
+        
+        dispatch_after(delayTime, dispatch_get_main_queue()) {
+            println("test")
+            self.AudioPlayer.stop()
+        }
     }
 
     func PlaySound(){
