@@ -33,6 +33,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
 
     //Screen is set to the view
     override func didMoveToView(view: SKView) {
+        bStart.DangerZone = true;
         //no gravity
         // create administartion > with scene (this)
         physicsWorld.gravity = CGVectorMake(0, 0)
@@ -87,28 +88,56 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             addChild(tempBlock)
         }
         else{
-            for amount in 0...2{
+            for amount in 0...7{
                 var tempBlock:MySprite
                 
                 if(amount == 0)
                 {
                     tempBlock = MySprite(imageNamed: "Loop")
                     tempBlock.block = Walk(p: admin!.player)
-                    loopFloat = CGPoint(x: size.width * 0.9 , y: size.height * CGFloat(amount + 1) * 0.1 )
+                    loopFloat = CGPoint(x: size.width * 0.9 , y: size.height * CGFloat(amount + 4) * 0.06 )
                     tempBlock.position = loopFloat
                 }
                 else if(amount == 1)
                 {
                     tempBlock = MySprite(imageNamed: "Geluid")
                     tempBlock.block = Sound()
-                        GeluidFloat = CGPoint(x: size.width * 0.9 , y: size.height * CGFloat(amount + 1) * 0.1 )
+                        GeluidFloat = CGPoint(x: size.width * 0.9 , y: size.height * CGFloat(amount + 4) * 0.06 )
                     tempBlock.position = GeluidFloat
+                }
+                else if(amount == 2)
+                {
+                    tempBlock = MySprite(imageNamed: "DraaiDown")
+                    tempBlock.block = Turn(p: admin!.player, newWalkingDirection: WalkDirection.down)
+                   draaiFloat = CGPoint(x: size.width * 0.9 , y: size.height * CGFloat(amount + 4) * 0.06 )
+                    tempBlock.position = draaiFloat
+                }
+                else if(amount == 3)
+                {
+                    tempBlock = MySprite(imageNamed: "DraaiUp")
+                    tempBlock.block = Turn(p: admin!.player, newWalkingDirection: WalkDirection.up)
+                    draaiFloat = CGPoint(x: size.width * 0.9 , y: size.height * CGFloat(amount + 4) * 0.06 )
+                    tempBlock.position = draaiFloat
+                }
+                else if(amount == 4)
+                {
+                    tempBlock = MySprite(imageNamed: "DraaiLeft")
+                    tempBlock.block = Turn(p: admin!.player, newWalkingDirection: WalkDirection.left)
+                    draaiFloat = CGPoint(x: size.width * 0.9 , y: size.height * CGFloat(amount + 4) * 0.06 )
+                    tempBlock.position = draaiFloat
+                }
+                else if(amount == 5)
+                {
+                    tempBlock = MySprite(imageNamed: "Blazen")
+                    tempBlock.block = Blow();
+                    draaiFloat = CGPoint(x: size.width * 0.9 , y: size.height * CGFloat(amount + 4) * 0.06 )
+                    tempBlock.position = draaiFloat
                 }
                 else
                 {
-                    tempBlock = MySprite(imageNamed: "Draai")
-                    tempBlock.block = Turn(p: admin!.player, newWalkingDirection: WalkDirection.down)
-                   draaiFloat = CGPoint(x: size.width * 0.9 , y: size.height * CGFloat(amount + 1) * 0.1 )
+                    tempBlock = MySprite(imageNamed: "DraaiRight")
+                    tempBlock.block = Turn(p: admin!.player, newWalkingDirection: WalkDirection.right)
+                    draaiFloat = CGPoint(x: size.width * 0.9 , y: size.height * CGFloat(amount + 4) * 0.06 )
                     tempBlock.position = draaiFloat
                 }
                
@@ -116,7 +145,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
                 SetPhysicsPseudoBlocks(tempBlock)
                 var tempfloat = size.height * CGFloat(amount + 1)
                 
-                tempBlock.position = CGPoint(x: size.width * 0.9 , y: tempfloat * 0.1 )
+                tempBlock.position = CGPoint(x: size.width * 0.9 , y: tempfloat * 0.06 )
                 addChild(tempBlock)
                 
             }
@@ -146,6 +175,11 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     
     func projectileDidCollideWithMonster(firstBody : MySprite, SecondBody : MySprite) {
         // Create joint between two objects
+        if(!firstBody.DangerZone || !SecondBody.DangerZone)
+        {
+            return;
+        }
+        
         firstBody.position.x = SecondBody.position.x
         firstBody.position.y = SecondBody.position.y - firstBody.size.height
         
