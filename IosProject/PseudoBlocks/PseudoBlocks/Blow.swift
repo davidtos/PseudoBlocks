@@ -13,6 +13,10 @@ import AVFoundation
 
 class Blow: Block {
     
+    
+    
+    
+    
     var audioRecorder:AVAudioRecorder!
     
     var audioPlayer = AVAudioPlayer()
@@ -20,16 +24,44 @@ class Blow: Block {
     func start() {
         
         // record sound for 5 seconds
-        var url = self.record()
-        usleep(5)
-        audioRecorder.stop()
+        println("recording started")
         
-        // play recorded sound for 5 seconds
-        AVAudioPlayer(contentsOfURL: url, error: nil)
         
-        audioPlayer.play()
-        usleep(5)
-        audioPlayer.stop()
+        //Inside func recordAudio(sender: UIButton)
+        let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as! String
+        
+        let currentDateTime = NSDate()
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "ddMMyyyy-HHmmss"
+        let recordingName = formatter.stringFromDate(currentDateTime)+".wav"
+        let pathArray = [dirPath, recordingName]
+        let filePath = NSURL.fileURLWithPathComponents(pathArray)
+        //println(filePath)
+        
+        var session = AVAudioSession.sharedInstance()
+        session.setCategory(AVAudioSessionCategoryPlayAndRecord, error: nil)
+        
+        audioRecorder = AVAudioRecorder(URL: filePath, settings: nil, error: nil)
+        audioRecorder.meteringEnabled = true
+        audioRecorder.record()
+        
+        //var url = self.record()
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW,
+            Int64(2 * Double(NSEC_PER_SEC)))
+        
+        dispatch_after(delayTime, dispatch_get_main_queue()) {
+            println("recording stopped")
+            self.audioRecorder.stop()
+            // play recorded sound for 5 seconds
+            self.audioPlayer = AVAudioPlayer(contentsOfURL: filePath, error: nil)
+            println("playing started")
+            self.audioPlayer.play()
+        }
+        
+        //self.audioPlayer.stop()
+        
+        
+        
         
     }
     
