@@ -73,17 +73,53 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         }
         else if(2 == nummer){
             var tempBlock:MySprite
-            tempBlock = MySprite(imageNamed: "Draai")
-            tempBlock.block = Turn(p: admin!.player, newWalkingDirection: WalkDirection.down)
-            tempBlock.position = draaiFloat
+            tempBlock = MySprite(imageNamed: "DraaiUp")
+            tempBlock.block = Turn(p: admin!.player, newWalkingDirection: WalkDirection.up)
+            tempBlock.position = loopFloat
             SetPhysicsPseudoBlocks(tempBlock)
             addChild(tempBlock)
         }
-        else if(3 == nummer){
+       else if(3 == nummer){
+            
+            var tempBlock:MySprite
+            tempBlock = MySprite(imageNamed: "DraaiDown")
+            tempBlock.block = Turn(p: admin!.player, newWalkingDirection: WalkDirection.down)
+            tempBlock.position = loopFloat
+            SetPhysicsPseudoBlocks(tempBlock)
+            addChild(tempBlock)
+        }
+       else if(4 == nummer)
+        {
+            var tempBlock:MySprite
+            
+            tempBlock = MySprite(imageNamed: "DraaiRight")
+            tempBlock.block = Turn(p: admin!.player, newWalkingDirection: WalkDirection.right)
+            tempBlock.position = loopFloat
+            SetPhysicsPseudoBlocks(tempBlock)
+            addChild(tempBlock)
+        }
+        else if(5 == nummer)
+        {
+            var tempBlock:MySprite
+            tempBlock = MySprite(imageNamed: "DraaiLeft")
+            tempBlock.block = Turn(p: admin!.player, newWalkingDirection: WalkDirection.left)
+            tempBlock.position = loopFloat
+            SetPhysicsPseudoBlocks(tempBlock)
+            addChild(tempBlock)
+        }
+        else if(6 == nummer){
             var tempBlock:MySprite
             tempBlock = MySprite(imageNamed: "Geluid")
             tempBlock.block =  Sound()
-            tempBlock.position = draaiFloat
+            tempBlock.position = loopFloat
+            SetPhysicsPseudoBlocks(tempBlock)
+            addChild(tempBlock)
+        }
+        else if(7 == nummer){
+            var tempBlock:MySprite
+            tempBlock = MySprite(imageNamed: "Blazen")
+            tempBlock.block =  Blow()
+            tempBlock.position = loopFloat
             SetPhysicsPseudoBlocks(tempBlock)
             addChild(tempBlock)
         }
@@ -128,6 +164,13 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
                 }
                 else if(amount == 5)
                 {
+                    tempBlock = MySprite(imageNamed: "DraaiRight")
+                    tempBlock.block = Turn(p: admin!.player, newWalkingDirection: WalkDirection.right)
+                    draaiFloat = CGPoint(x: size.width * 0.9 , y: size.height * CGFloat(amount + 4) * 0.06 )
+                    tempBlock.position = draaiFloat
+                }
+                else if(amount == 6)
+                {
                     tempBlock = MySprite(imageNamed: "Blazen")
                     tempBlock.block = Blow();
                     draaiFloat = CGPoint(x: size.width * 0.9 , y: size.height * CGFloat(amount + 4) * 0.06 )
@@ -135,10 +178,10 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
                 }
                 else
                 {
-                    tempBlock = MySprite(imageNamed: "DraaiRight")
-                    tempBlock.block = Turn(p: admin!.player, newWalkingDirection: WalkDirection.right)
-                    draaiFloat = CGPoint(x: size.width * 0.9 , y: size.height * CGFloat(amount + 4) * 0.06 )
-                    tempBlock.position = draaiFloat
+                    tempBlock = MySprite()
+                    //tempBlock.block = Walk(p: admin!.player)
+                    //loopFloat = CGPoint(x: size.width * 0.9 , y: size.height * CGFloat(amount + 4) * 0.06 )
+                    //tempBlock.position = loopFloat
                 }
                
                 
@@ -310,10 +353,37 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
                     SetPseudoBlocks(1)
                 }
                 else if(node.block is Turn && node.DangerZone == false){
-                    SetPseudoBlocks(2)
+                    println((node.block as! Turn).nextWD.description)
+                    if (node.block as! Turn).nextWD.description == WalkDirection.up.description
+                    {
+                        println("2")
+                        SetPseudoBlocks(2)
+                    }
+                    else if (node.block as! Turn).nextWD.description == WalkDirection.down.description
+                    {
+                        println("3")
+                        SetPseudoBlocks(3)
+                    }
+                    else if (node.block as! Turn).nextWD.description == WalkDirection.right.description
+                    {
+                        println("4")
+                     SetPseudoBlocks(4)
+                    }
+                    else if (node.block as! Turn).nextWD.description == WalkDirection.left.description
+                    {
+                        println("5")
+                        SetPseudoBlocks(5)
+                    }
+                    else
+                    {
+                        SetPseudoBlocks(2)
+                    }
                 }
                 else if(node.block is Sound && node.DangerZone == false){
-                    SetPseudoBlocks(3)
+                    SetPseudoBlocks(6)
+                }
+                else if(node.block is Blow && node.DangerZone == false){
+                    SetPseudoBlocks(7)
                 }
                 node.DangerZone = true
             }
