@@ -234,7 +234,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         firstBody.MyJoints.append(myJoint1)
         self.physicsWorld.addJoint(myJoint)
         self.physicsWorld.addJoint(myJoint1)
-        
+
         firstBody.ParentSprite = SecondBody
         SecondBody.ChildSprite = firstBody
     }
@@ -243,13 +243,27 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
      
         var firstBody: SKPhysicsBody
         var secondBody: SKPhysicsBody
-        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+  
+        firstBody = contact.bodyB
+        secondBody = contact.bodyA
+        
+        var temp1Sprite = firstBody.node as! MySprite
+        var temp2Sprite = secondBody.node as! MySprite
+        
+        if(temp1Sprite.ParentSprite != nil && temp1Sprite.block != nil){
             firstBody = contact.bodyA
             secondBody = contact.bodyB
-        } else {
+        }
+        else if(temp1Sprite.ParentSprite != nil){
+            firstBody = contact.bodyA
+            secondBody = contact.bodyB
+        }
+        else{
             firstBody = contact.bodyB
             secondBody = contact.bodyA
         }
+        
+            
         
         if ((firstBody.categoryBitMask == PhysicsCategory.phyTile) &&
             (secondBody.categoryBitMask == PhysicsCategory.phyTile)) {
