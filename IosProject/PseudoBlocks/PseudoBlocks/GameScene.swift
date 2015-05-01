@@ -30,6 +30,19 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     
     var admin: Project?
     
+    init(size: CGSize,map : [Tile])
+    {
+        super.init(size: size)
+        self.map = map;
+    }
+    
+    override init(size: CGSize) {
+        super.init(size: size)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     //Screen is set to the view
     override func didMoveToView(view: SKView) {
@@ -44,7 +57,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         background.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
         background.zPosition = -1
         addChild(background)
-        generateMap()
+        DrawMap()
         var p = Player(sc: self,t: self.getTile(0, row: 3)!)
         addChild(player)
         //create a map
@@ -263,8 +276,6 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             secondBody = contact.bodyA
         }
         
-            
-        
         if ((firstBody.categoryBitMask == PhysicsCategory.phyTile) &&
             (secondBody.categoryBitMask == PhysicsCategory.phyTile)) {
                 
@@ -291,26 +302,21 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         addChild(StopButtonSprite)
     }
     
-	// generates for now a default map for testing
-    func generateMap(){
-        for colmn in 0..<NumColumns{
-            for row in 0..<NumRows{
-                
-                var tempSprite = MySprite(imageNamed: "GrassTile")
-                var tile = Tile(column: colmn, row: row, tileType: TileType.Grass, sprite: tempSprite)
-				
-                var startPointWidth : CGFloat
-                var startPointHeigt : CGFloat
-                
-                startPointHeigt = (size.height - tile.sprite.size.height * 0.9) - tile.sprite.size.height *  (CGFloat(NumRows) - CGFloat(row))
-                startPointWidth = size.width - tile.sprite.size.width *  (CGFloat(NumColumns) - CGFloat(colmn))
-                
-                tile.sprite.position = CGPoint(x: startPointWidth, y: startPointHeigt)
-                map.append(tile)
-                addChild(tile.sprite)
-            }
+    
+    func DrawMap(){
+        for tile in map{
+            var startPointWidth : CGFloat
+            var startPointHeigt : CGFloat
+            
+            startPointHeigt = (size.height - tile.sprite.size.height * 0.9) - tile.sprite.size.height *  (CGFloat(NumRows) - CGFloat(tile.row))
+            startPointWidth = size.width - tile.sprite.size.width *  (CGFloat(NumColumns) - CGFloat(tile.column))
+            
+            tile.sprite.position = CGPoint(x: startPointWidth, y: startPointHeigt)
+            map.append(tile)
+            addChild(tile.sprite)
         }
     }
+    
     //get a tile based on its position in the tabel
     func getTile(column: Int, row: Int) -> Tile?{
         var tile = Tile?();

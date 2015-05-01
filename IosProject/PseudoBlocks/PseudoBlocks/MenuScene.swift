@@ -6,9 +6,10 @@ class MenuScene: SKScene,SKPhysicsContactDelegate {
     let PlayButton = SKSpriteNode(imageNamed: "PlayButton")
     let ShareButton = SKSpriteNode(imageNamed: "ShareButton")
     let LevelsButton = SKSpriteNode(imageNamed: "LevelsButton")
-    
+    var map = [Tile]()
 	let reveal = SKTransition.doorsOpenHorizontalWithDuration(0.5)
 	
+    
 	
     override func didMoveToView(view: SKView) {
         physicsWorld.gravity = CGVectorMake(0, 0)
@@ -38,7 +39,9 @@ class MenuScene: SKScene,SKPhysicsContactDelegate {
             let touchedNode = nodeAtPoint(location)
 			
             if PlayButton == touchedNode{
-                let gameScene = GameScene(size: self.size)
+                generateMap()
+                let gameScene = GameScene(size: self.size,map: map)
+                
                 
                 self.view?.presentScene(gameScene, transition: reveal)
                 
@@ -46,5 +49,26 @@ class MenuScene: SKScene,SKPhysicsContactDelegate {
             
         }
         
+    }
+    
+    // generates for now a default map for testing
+    func generateMap(){
+        for colmn in 0..<NumColumns{
+            for row in 0..<NumRows{
+                
+                var tempSprite = MySprite(imageNamed: "GrassTile")
+                var tile = Tile(column: colmn, row: row, tileType: TileType.Grass, sprite: tempSprite)
+                
+                var startPointWidth : CGFloat
+                var startPointHeigt : CGFloat
+                
+                startPointHeigt = (size.height - tile.sprite.size.height * 0.9) - tile.sprite.size.height *  (CGFloat(NumRows) - CGFloat(row))
+                startPointWidth = size.width - tile.sprite.size.width *  (CGFloat(NumColumns) - CGFloat(colmn))
+                
+                // tile.sprite.position = CGPoint(x: startPointWidth, y: startPointHeigt)
+                map.append(tile)
+                //addChild(tile.sprite)
+            }
+        }
     }
 }
