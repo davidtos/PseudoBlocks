@@ -132,7 +132,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         else if(7 == nummer){
             var tempBlock:MySprite
             tempBlock = MySprite(imageNamed: "Blazen")
-            tempBlock.block =  Blow()
+            tempBlock.block =  Blow(p: admin!.player)
             tempBlock.position = loopFloat
             SetPhysicsPseudoBlocks(tempBlock)
             addChild(tempBlock)
@@ -186,7 +186,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
                 else if(amount == 6)
                 {
                     tempBlock = MySprite(imageNamed: "Blazen")
-                    tempBlock.block = Blow();
+                    tempBlock.block = Blow(p: admin!.player)
                     draaiFloat = CGPoint(x: size.width * 0.9 , y: size.height * CGFloat(amount + 4) * 0.06 )
                     tempBlock.position = draaiFloat
                 }
