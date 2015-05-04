@@ -61,8 +61,8 @@ class MenuScene: SKScene,SKPhysicsContactDelegate {
         // 5 = animal
         var mymap: [[Int]] =  [ [2,1,2,2,2,2],
                                 [2,0,2,2,2,2],
+                                [2,5,2,2,2,2],
                                 [2,0,4,4,0,2],
-                                [2,2,2,2,3,2],
                                 [2,2,2,2,3,2],
                                 [2,2,2,2,0,2]]
         mymap = mymap.reverse()
@@ -98,7 +98,7 @@ class MenuScene: SKScene,SKPhysicsContactDelegate {
                     tiletype = TileType.dust
                     break;
                 case 5:
-                    tempSprite = MySprite(imageNamed: "GrassTile")
+                    tempSprite = MySprite(imageNamed: "AnimalTile")
                     tiletype = TileType.animal
                     break;
                 default:
