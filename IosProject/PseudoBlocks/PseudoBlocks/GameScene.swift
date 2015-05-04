@@ -80,7 +80,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             var tempBlock:MySprite
             tempBlock = MySprite(imageNamed: "Loop")
             tempBlock.block = Walk(p: admin!.player)
-            tempBlock.position = loopFloat
+            tempBlock.position = CGPoint(x: size.width * 0.74 , y: size.height * CGFloat(2) * 0.06 )
             SetPhysicsPseudoBlocks(tempBlock)
             addChild(tempBlock)
         }
@@ -88,7 +88,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             var tempBlock:MySprite
             tempBlock = MySprite(imageNamed: "DraaiUp")
             tempBlock.block = Turn(p: admin!.player, newWalkingDirection: WalkDirection.up)
-            tempBlock.position = loopFloat
+            tempBlock.position = CGPoint(x: size.width * 0.74 , y: size.height * CGFloat(3) * 0.06 )
             SetPhysicsPseudoBlocks(tempBlock)
             addChild(tempBlock)
         }
@@ -97,7 +97,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             var tempBlock:MySprite
             tempBlock = MySprite(imageNamed: "DraaiDown")
             tempBlock.block = Turn(p: admin!.player, newWalkingDirection: WalkDirection.down)
-            tempBlock.position = loopFloat
+            tempBlock.position = CGPoint(x: size.width * 0.74 , y: size.height * CGFloat(4) * 0.06 )
             SetPhysicsPseudoBlocks(tempBlock)
             addChild(tempBlock)
         }
@@ -107,7 +107,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             
             tempBlock = MySprite(imageNamed: "DraaiRight")
             tempBlock.block = Turn(p: admin!.player, newWalkingDirection: WalkDirection.right)
-            tempBlock.position = loopFloat
+            tempBlock.position = CGPoint(x: size.width * 0.74 , y: size.height * CGFloat(5) * 0.06 )
             SetPhysicsPseudoBlocks(tempBlock)
             addChild(tempBlock)
         }
@@ -116,7 +116,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             var tempBlock:MySprite
             tempBlock = MySprite(imageNamed: "DraaiLeft")
             tempBlock.block = Turn(p: admin!.player, newWalkingDirection: WalkDirection.left)
-            tempBlock.position = loopFloat
+            tempBlock.position = CGPoint(x: size.width * 0.74 , y: size.height * CGFloat(6) * 0.06 )
             SetPhysicsPseudoBlocks(tempBlock)
             addChild(tempBlock)
         }
@@ -124,7 +124,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             var tempBlock:MySprite
             tempBlock = MySprite(imageNamed: "Geluid")
             tempBlock.block =  Sound()
-            tempBlock.position = loopFloat
+            tempBlock.position = CGPoint(x: size.width * 0.9 , y: size.height * CGFloat(6) * 0.06 )
             SetPhysicsPseudoBlocks(tempBlock)
             addChild(tempBlock)
         }
