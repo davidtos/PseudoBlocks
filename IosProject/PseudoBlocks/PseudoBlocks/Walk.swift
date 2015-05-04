@@ -26,25 +26,45 @@ class Walk: Block {
             
         case WalkDirection.right:
             tile = player.scene.getTile(player.tile.column + 1, row: player.tile.row)!
+            if(tile.tileType == TileType.grass){
             player.scene.movePlayer(tile)
+            }
+            else {
+                tile = player.scene.getTile(player.tile.column, row: player.tile.row)!
+            }
             //println("1c:\(player.tile.column) - r \(player.tile.row)")
 
             break
         case WalkDirection.up:
             tile = player.scene.getTile(player.tile.column, row: player.tile.row + 1)!
+            if(tile.tileType == TileType.grass){
             player.scene.movePlayer(tile)
+            }
+            else {
+                tile = player.scene.getTile(player.tile.column, row: player.tile.row)!
+            }
             // println("2c:\(player.tile.column) - r \(player.tile.row)")
             
             break
         case WalkDirection.down:
             tile = player.scene.getTile(player.tile.column, row: player.tile.row - 1)!
+            if(tile.tileType == TileType.grass){
             player.scene.movePlayer(tile)
+            }
+            else {
+                tile = player.scene.getTile(player.tile.column, row: player.tile.row)!
+            }
             // println("3c:\(player.tile.column) - r \(player.tile.row)")
             
             break
         case WalkDirection.left:
             tile = player.scene.getTile(player.tile.column - 1, row: player.tile.row)!
+            if(tile.tileType == TileType.grass){
             player.scene.movePlayer(tile)
+            }
+            else {
+                tile = player.scene.getTile(player.tile.column, row: player.tile.row)!
+            }
             // println("4c:\(player.tile.column) - r \(player.tile.row)")
             
             break
@@ -52,7 +72,7 @@ class Walk: Block {
             tile = player.tile
             break
         }
-        
+        println("x:\(tile.column) y:\(tile.row)")
         player.tile = tile
     }
     
