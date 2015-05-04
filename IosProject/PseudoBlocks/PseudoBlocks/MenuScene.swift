@@ -61,9 +61,9 @@ class MenuScene: SKScene,SKPhysicsContactDelegate {
         // 5 = animal
         var mymap: [[Int]] =  [ [2,1,2,2,2,2],
                                 [2,0,2,2,2,2],
-                                [2,0,3,3,0,2],
-                                [2,2,2,2,0,2],
-                                [2,2,2,2,0,2],
+                                [2,0,4,4,0,2],
+                                [2,2,2,2,3,2],
+                                [2,2,2,2,3,2],
                                 [2,2,2,2,0,2]]
         mymap = mymap.reverse()
         
