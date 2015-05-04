@@ -7,10 +7,10 @@ class MenuScene: SKScene,SKPhysicsContactDelegate {
     let ShareButton = SKSpriteNode(imageNamed: "ShareButton")
     let LevelsButton = SKSpriteNode(imageNamed: "LevelsButton")
     var map = [Tile]()
-	let reveal = SKTransition.doorsOpenHorizontalWithDuration(0.5)
-	
+    let reveal = SKTransition.doorsOpenHorizontalWithDuration(0.5)
     
-	
+    
+    
     override func didMoveToView(view: SKView) {
         physicsWorld.gravity = CGVectorMake(0, 0)
         physicsWorld.contactDelegate = self
@@ -20,7 +20,7 @@ class MenuScene: SKScene,SKPhysicsContactDelegate {
         background.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
         addChild(background)
         setButtons()
-
+        
     }
     // set all the buttons used in this scene
     func setButtons(){
@@ -37,7 +37,7 @@ class MenuScene: SKScene,SKPhysicsContactDelegate {
         for touch: AnyObject in touches {
             let location = (touch as! UITouch).locationInNode(self)
             let touchedNode = nodeAtPoint(location)
-			
+            
             if PlayButton == touchedNode{
                 generateMap()
                 let gameScene = GameScene(size: self.size,map: map)
@@ -59,33 +59,67 @@ class MenuScene: SKScene,SKPhysicsContactDelegate {
         // 3 = water
         // 4 = dust
         // 5 = animal
-        var map: Int[][] = [[2,1,2,2,2,2],
-                            [2,0,2,2,2,2],
-                            [2,0,0,0,0,2],
-                            [2,2,2,2,3,2],
-                            [2,2,2,2,3,2],
-                            [2,2,2,2,0,2]]
+        var map: [[Int]] =  [[2,1,2,2,2,2],
+            [2,0,2,2,2,2],
+            [2,0,3,3,0,2],
+            [2,2,2,2,0,2],
+            [2,2,2,2,0,2],
+            [2,2,2,2,0,2]]
         map = map.reverse()
-
+        
+        var tiletype = TileType.grass
+        
         var rowid = 0
         for row in map {
             
             var colid = 0
             for column in row {
+                switch(column)
+                {
+                case TileType.grass.rawValue:
+                    var tempSprite = MySprite(imageNamed: "GrassTile")
+                    tiletype = TileType.grass
+                    break;
+                case TileType.spawn.rawValue:
+                    var tempSprite = MySprite(imageNamed: "GrassTile")
+                    tiletype = TileType.spawn
+                    break;
+                case TileType.wall.rawValue:
+                    var tempSprite = MySprite(imageNamed: "DarkTile")
+                    tiletype = TileType.wall
+                    break;
+                case TileType.water.rawValue:
+                    var tempSprite = MySprite(imageNamed: "WaterTile")
+                    tiletype = TileType.water
+                    break;
+                case TileType.dust.rawValue:
+                    var tempSprite = MySprite(imageNamed: "GrassTile")
+                    tiletype = TileType.dust
+                    break;
+                case TileType.animal.rawValue:
+                    var tempSprite = MySprite(imageNamed: "GrassTile")
+                    tiletype = TileType.animal
+                    break;
+                default:
+                    var tempSprite = MySprite(imageNamed: "GrassTile")
+                    break;
+                    
+                }
+                var tile = Tile(column: colid, row: row, tileType: TileType.grass, sprite: tempSprite)
                 
-                var tempSprite = MySprite(imageNamed: "GrassTile")
-                var tile = Tile(column: colmn, row: row, tileType: TileType.Grass, sprite: tempSprite)
                 
                 var startPointWidth : CGFloat
                 var startPointHeigt : CGFloat
                 
                 startPointHeigt = (size.height - tile.sprite.size.height * 0.9) - tile.sprite.size.height *  (CGFloat(NumRows) - CGFloat(row))
-                startPointWidth = size.width - tile.sprite.size.width *  (CGFloat(NumColumns) - CGFloat(colmn))
+                startPointWidth = size.width - tile.sprite.size.width *  (CGFloat(NumColumns) - CGFloat(colid))
                 
                 // tile.sprite.position = CGPoint(x: startPointWidth, y: startPointHeigt)
                 map.append(tile)
                 //addChild(tile.sprite)
+                colid++
             }
+            rowid++
         }
     }
 }
