@@ -67,6 +67,7 @@ class MenuScene: SKScene,SKPhysicsContactDelegate {
             [2,2,2,2,0,2]]
         map = map.reverse()
         
+        var tempSprite = MySprite(imageNamed: "GrassTile")
         var tiletype = TileType.grass
         
         var rowid = 0
@@ -77,35 +78,35 @@ class MenuScene: SKScene,SKPhysicsContactDelegate {
                 switch(column)
                 {
                 case TileType.grass.rawValue:
-                    var tempSprite = MySprite(imageNamed: "GrassTile")
+                     tempSprite = MySprite(imageNamed: "GrassTile")
                     tiletype = TileType.grass
                     break;
                 case TileType.spawn.rawValue:
-                    var tempSprite = MySprite(imageNamed: "GrassTile")
+                     tempSprite = MySprite(imageNamed: "GrassTile")
                     tiletype = TileType.spawn
                     break;
                 case TileType.wall.rawValue:
-                    var tempSprite = MySprite(imageNamed: "DarkTile")
+                     tempSprite = MySprite(imageNamed: "DarkTile")
                     tiletype = TileType.wall
                     break;
                 case TileType.water.rawValue:
-                    var tempSprite = MySprite(imageNamed: "WaterTile")
+                     tempSprite = MySprite(imageNamed: "WaterTile")
                     tiletype = TileType.water
                     break;
                 case TileType.dust.rawValue:
-                    var tempSprite = MySprite(imageNamed: "GrassTile")
+                     tempSprite = MySprite(imageNamed: "GrassTile")
                     tiletype = TileType.dust
                     break;
                 case TileType.animal.rawValue:
-                    var tempSprite = MySprite(imageNamed: "GrassTile")
+                     tempSprite = MySprite(imageNamed: "GrassTile")
                     tiletype = TileType.animal
                     break;
                 default:
-                    var tempSprite = MySprite(imageNamed: "GrassTile")
+                     tempSprite = MySprite(imageNamed: "GrassTile")
                     break;
                     
                 }
-                var tile = Tile(column: colid, row: row, tileType: TileType.grass, sprite: tempSprite)
+                var tile = Tile(column: colid, row: row, tileType: tiletype, sprite: tempSprite)
                 
                 
                 var startPointWidth : CGFloat
