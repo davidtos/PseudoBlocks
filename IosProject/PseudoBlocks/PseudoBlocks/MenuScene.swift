@@ -53,8 +53,25 @@ class MenuScene: SKScene,SKPhysicsContactDelegate {
     
     // generates for now a default map for testing
     func generateMap(){
-        for colmn in 0..<NumColumns{
-            for row in 0..<NumRows{
+        // 0 = grass
+        // 1 = spawn
+        // 2 = wall
+        // 3 = water
+        // 4 = dust
+        // 5 = animal
+        var map: Int[][] = [[2,1,2,2,2,2],
+                            [2,0,2,2,2,2],
+                            [2,0,0,0,0,2],
+                            [2,2,2,2,3,2],
+                            [2,2,2,2,3,2],
+                            [2,2,2,2,0,2]]
+        map = map.reverse()
+
+        var rowid = 0
+        for row in map {
+            
+            var colid = 0
+            for column in row {
                 
                 var tempSprite = MySprite(imageNamed: "GrassTile")
                 var tile = Tile(column: colmn, row: row, tileType: TileType.Grass, sprite: tempSprite)
