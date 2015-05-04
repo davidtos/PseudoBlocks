@@ -27,6 +27,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     var loopFloat = CGPoint()
     var draaiFloat = CGPoint()
     var GeluidFloat = CGPoint()
+    var spawnpoint = CGPoint()
     
     var admin: Project?
     
@@ -58,11 +59,11 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         background.zPosition = -1
         addChild(background)
         DrawMap()
-        var p = Player(sc: self,t: self.getTile(0, row: 3)!)
+        var p = Player(sc: self,t: self.getTile(Int(spawnpoint.x), row:Int(spawnpoint.y))!)
         addChild(player)
         //create a map
         
-        var tile = getTile(0, row: 3)
+        var tile = getTile(Int(spawnpoint.x), row:Int(spawnpoint.y))
         if(tile != nil){
             player.position = tile!.sprite.position
             //set player to foreground
@@ -314,6 +315,10 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             tile.sprite.position = CGPoint(x: startPointWidth, y: startPointHeigt)
             map.append(tile)
             addChild(tile.sprite)
+            
+            if(tile.tileType == TileType.spawn){
+                 spawnpoint = CGPoint(x:tile.column,y:tile.row)
+            }
         }
     }
     
