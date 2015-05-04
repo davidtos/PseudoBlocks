@@ -94,7 +94,7 @@ class MenuScene: SKScene,SKPhysicsContactDelegate {
                     tiletype = TileType.water
                     break;
                 case 4:
-                    tempSprite = MySprite(imageNamed: "GrassTile")
+                    tempSprite = MySprite(imageNamed: "DustTile")
                     tiletype = TileType.dust
                     break;
                 case 5:
