@@ -124,7 +124,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         else if(6 == nummer){
             var tempBlock:MySprite
             tempBlock = MySprite(imageNamed: "Geluid")
-            tempBlock.block =  Sound()
+            tempBlock.block =  Sound(p: admin!.player)
             tempBlock.position = CGPoint(x: size.width * 0.9 , y: size.height * CGFloat(6) * 0.06 )
             SetPhysicsPseudoBlocks(tempBlock)
             addChild(tempBlock)
@@ -151,7 +151,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
                 else if(amount == 1)
                 {
                     tempBlock = MySprite(imageNamed: "Geluid")
-                    tempBlock.block = Sound()
+                    tempBlock.block = Sound(p: admin!.player)
                         GeluidFloat = CGPoint(x: size.width * 0.9 , y: size.height * CGFloat(amount + 4) * 0.06 )
                     tempBlock.position = GeluidFloat
                 }
