@@ -9,8 +9,6 @@ class MenuScene: SKScene,SKPhysicsContactDelegate {
     var map = [Tile]()
     let reveal = SKTransition.doorsOpenHorizontalWithDuration(0.5)
     
-    
-    
     override func didMoveToView(view: SKView) {
         physicsWorld.gravity = CGVectorMake(0, 0)
         physicsWorld.contactDelegate = self
@@ -41,10 +39,11 @@ class MenuScene: SKScene,SKPhysicsContactDelegate {
             if PlayButton == touchedNode{
                 generateMap()
                 let gameScene = GameScene(size: self.size,map: map)
-                
-                
                 self.view?.presentScene(gameScene, transition: reveal)
-                
+            }
+            else if LevelsButton == touchedNode {
+                let levelSelectScene = LevelSelectScene(size: self.size)
+                self.view?.presentScene(levelSelectScene, transition: reveal)
             }
             
         }
@@ -104,7 +103,6 @@ class MenuScene: SKScene,SKPhysicsContactDelegate {
                 default:
                     tempSprite = MySprite(imageNamed: "GrassTile")
                     break;
-                    
                 }
                 var t = Tile(column: colid, row: rowid, tileType: tiletype, sprite: tempSprite)
                 
@@ -118,6 +116,7 @@ class MenuScene: SKScene,SKPhysicsContactDelegate {
                 map.append(t)
                 //addChild(tile.sprite)
                 colid++
+
             }
             rowid++
         }

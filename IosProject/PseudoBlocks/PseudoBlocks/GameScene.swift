@@ -204,7 +204,6 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
                 
                 tempBlock.position = CGPoint(x: size.width * 0.9 , y: tempfloat * 0.06 )
                 addChild(tempBlock)
-                
             }
         }
     }
