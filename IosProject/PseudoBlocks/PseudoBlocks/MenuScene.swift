@@ -16,6 +16,7 @@ class MenuScene: SKScene,SKPhysicsContactDelegate {
         background.anchorPoint = CGPointMake(0.5, 0.5)
         background.size.height = self.size.height
         background.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
+        background.zPosition = -1
         addChild(background)
         setButtons()
         
