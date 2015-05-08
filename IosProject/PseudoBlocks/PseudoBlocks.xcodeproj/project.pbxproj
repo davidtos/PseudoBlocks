@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6300C4FC1AFD56F600D1898B /* EndLevelScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6300C4FB1AFD56F600D1898B /* EndLevelScene.swift */; };
 		63127FBF1AFA22AD00034E75 /* LevelSelectScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63127FBE1AFA22AD00034E75 /* LevelSelectScene.swift */; };
 		6336F6401ADFEEE4003225F5 /* MySprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6336F63F1ADFEEE4003225F5 /* MySprite.swift */; };
 		633AA99B1AFCFE6E00094C8D /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 633AA99A1AFCFE6E00094C8D /* Level.swift */; };
@@ -52,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6300C4FB1AFD56F600D1898B /* EndLevelScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndLevelScene.swift; sourceTree = "<group>"; };
 		63127FBE1AFA22AD00034E75 /* LevelSelectScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelectScene.swift; sourceTree = "<group>"; };
 		6336F63F1ADFEEE4003225F5 /* MySprite.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySprite.swift; sourceTree = "<group>"; };
 		633AA99A1AFCFE6E00094C8D /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				636D9ACD1AFA9B810038F720 /* LevelSprite.swift */,
 				633AA99A1AFCFE6E00094C8D /* Level.swift */,
 				63690B4C1ADA90EF00C1EF11 /* Images.xcassets */,
+				6300C4FB1AFD56F600D1898B /* EndLevelScene.swift */,
 				63690B4E1ADA90EF00C1EF11 /* LaunchScreen.xib */,
 				63690B3F1ADA90EF00C1EF11 /* Supporting Files */,
 			);
@@ -328,6 +331,7 @@
 				633AA99B1AFCFE6E00094C8D /* Level.swift in Sources */,
 				63127FBF1AFA22AD00034E75 /* LevelSelectScene.swift in Sources */,
 				63690B461ADA90EF00C1EF11 /* GameScene.swift in Sources */,
+				6300C4FC1AFD56F600D1898B /* EndLevelScene.swift in Sources */,
 				F5EC48251ADC460B003FF6E2 /* Swim.swift in Sources */,
 				F5EC48201ADC441F003FF6E2 /* Block.swift in Sources */,
 				63690B751ADA9F8B00C1EF11 /* Array2D.swift in Sources */,

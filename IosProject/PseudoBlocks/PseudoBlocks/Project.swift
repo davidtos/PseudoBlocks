@@ -49,7 +49,9 @@ let reveal = SKTransition.doorsOpenHorizontalWithDuration(0.5)
         
         if levelnummer + 1 > 4
         {
-          // show the end screen
+            let endlevelScene = EndLevelScene(size: size)
+            player.scene.view?.presentScene(endlevelScene, transition: reveal)
+
         }
         else{
             var templevel = Level(map: [
