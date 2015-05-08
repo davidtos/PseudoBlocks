@@ -21,14 +21,25 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     let StopButtonSprite = MySprite(imageNamed: "StopButton")
     //the back button
     let BackButtonSprite = MySprite(imageNamed: "BackButton")
-
+    // level finished  sprite
+    let finished = MySprite(imageNamed: "levelFinished")
+    //the back button finished
+    let finishedBackButtonSprite = MySprite(imageNamed: "BackButton")
+    // aantal blokken
+    var BlockCount = SKLabelNode(fontNamed: "Arial")
+    // rijd
+    var TimeUsed = SKLabelNode(fontNamed: "Arial")
+    // score
+    var score = SKLabelNode(fontNamed: "Arial")
+    
     let player = MySprite(imageNamed: "Player")
     let bStart = MySprite(imageNamed: "Start")
     var loopFloat = CGPoint()
     var draaiFloat = CGPoint()
     var GeluidFloat = CGPoint()
     var spawnpoint = CGPoint()
-    
+    var count = 0
+    let startTime = NSDate()
     var admin: Project?
     
     init(size: CGSize,map : [Tile])
@@ -423,6 +434,54 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     
     func StopPressed()
     {
+    }
+    
+    
+    func countBlocks(sprite : MySprite) ->Int{
+        if(sprite.ChildSprite != nil)
+        {
+            count++
+            countBlocks(sprite.ChildSprite!)
+        }
+        return count
+    }
+    
+    
+    func levelFinished()
+    {
+        finished.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
+        //the back button finished
+        finishedBackButtonSprite.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) - finished.size.height / 2)
+        
+        count = 0
+        BlockCount.text = "Aantal blokken: " + String(countBlocks(bStart))
+        BlockCount.fontSize = 20
+        BlockCount.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) - finished.size.height / 4)
+        BlockCount.zPosition = 2
+        
+        var score1 = 300 - round(startTime.timeIntervalSinceNow * -1)
+        var score2 = (1000 - count * 100)
+        
+        score.text = "Score: " + String(Int(score1) + Int(score2))
+        score.fontSize = 23
+        score.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) - finished.size.height / 3)
+        score.zPosition = 2
+        
+        TimeUsed.text = "Seconden gebruikt: " + String(stringInterpolationSegment: round(startTime.timeIntervalSinceNow * -1))
+        TimeUsed.fontSize = 20
+        TimeUsed.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) - finished.size.height / 5)
+        TimeUsed.zPosition = 2
+        
+        BlockCount.text = "Aantal blokken: " + String(countBlocks(bStart))
+        BlockCount.fontSize = 20
+        BlockCount.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) - finished.size.height / 4)
+        BlockCount.zPosition = 2
+        
+        addChild(finished)
+        addChild(BlockCount)
+        addChild(TimeUsed)
+        addChild(score)
+        addChild(finishedBackButtonSprite)
         
     }
     
@@ -441,6 +500,10 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
                 let menuScene = MenuScene(size: self.size)
                 let reveal = SKTransition.doorsCloseHorizontalWithDuration(0.5)
                 self.view?.presentScene(menuScene, transition: reveal)
+            case finishedBackButtonSprite:
+                let menuScene = MenuScene(size: self.size)
+                let reveal = SKTransition.doorsCloseHorizontalWithDuration(0.5)
+                self.view?.presentScene(menuScene, transition: reveal)
             default:
                 if(touchedNode is MySprite){
                     var node = touchedNode as! MySprite
@@ -451,7 +514,11 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
                         node.ParentSprite = nil
                     }
                 }
-                
+                score.removeFromParent()
+                TimeUsed.removeFromParent()
+                BlockCount.removeFromParent()
+                finished.removeFromParent()
+                finishedBackButtonSprite.removeFromParent()
                 return
             }
         }
