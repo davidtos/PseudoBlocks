@@ -45,12 +45,14 @@ class LevelSelectScene: SKScene,SKPhysicsContactDelegate {
             startPointWidth = BackButtonSprite.size.width  + tempPoint
             levelButtonSprite.position = CGPoint(x:startPointWidth , y: startPointHeigt - BackButtonSprite.size.width * 1.3)
             
-            levelButtonSprite.mymap =  [ [2,0,2,2,2,2],
+            var tempLevel = Level(map:[[2,0,2,2,2,2],
                 [2,0,2,2,2,2],
                 [2,5,2,2,2,2],
                 [2,1,4,4,0,2],
                 [2,2,2,2,3,2],
-                [2,2,2,2,0,2]]
+                [2,2,2,2,0,2]],nummer:i)
+            
+            levelButtonSprite.level = tempLevel
             
             addChild(levelButtonSprite)
         }
@@ -71,7 +73,7 @@ class LevelSelectScene: SKScene,SKPhysicsContactDelegate {
             else if touchedNode is LevelSprite  {
                 var node = touchedNode as! LevelSprite
                 
-                let gameScene = GameScene(size: self.size,map: Map.generateMap(node.mymap!))
+                let gameScene = GameScene(size: self.size,level: node.level!)
                 self.view?.presentScene(gameScene, transition: reveal)
           }
         }

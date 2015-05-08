@@ -31,6 +31,8 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     var TimeUsed = SKLabelNode(fontNamed: "Arial")
     // score
     var score = SKLabelNode(fontNamed: "Arial")
+    //next level button
+    let nextlevel = MySprite(imageNamed: "BackButton")
     
     let player = MySprite(imageNamed: "Player")
     let bStart = MySprite(imageNamed: "Start")
@@ -41,11 +43,13 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     var count = 0
     let startTime = NSDate()
     var admin: Project?
+    var levelnummer = 0
     
-    init(size: CGSize,map : [Tile])
+    init(size: CGSize,level : Level)
     {
         super.init(size: size)
-        self.map = map;
+        self.map = Map.generateMap(level.mymap)
+        self.levelnummer = level.intLevel
     }
     
     override init(size: CGSize) {
@@ -434,6 +438,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     
     func StopPressed()
     {
+        levelFinished()
     }
     
     
@@ -451,7 +456,8 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     {
         finished.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
         //the back button finished
-        finishedBackButtonSprite.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) - finished.size.height / 2)
+        finishedBackButtonSprite.position = CGPointMake(CGRectGetMidX(self.frame) - finishedBackButtonSprite.size.width , CGRectGetMidY(self.frame) - finished.size.height / 2)
+        nextlevel.position = CGPointMake(CGRectGetMidX(self.frame) + finishedBackButtonSprite.size.width, CGRectGetMidY(self.frame) - finished.size.height / 2)
         
         count = 0
         BlockCount.text = "Aantal blokken: " + String(countBlocks(bStart))
@@ -477,11 +483,14 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
         BlockCount.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame) - finished.size.height / 4)
         BlockCount.zPosition = 2
         
+        
         addChild(finished)
         addChild(BlockCount)
         addChild(TimeUsed)
         addChild(score)
         addChild(finishedBackButtonSprite)
+        nextlevel.xScale = -1.0;
+        addChild(nextlevel)
         
     }
     
@@ -504,6 +513,8 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
                 let menuScene = MenuScene(size: self.size)
                 let reveal = SKTransition.doorsCloseHorizontalWithDuration(0.5)
                 self.view?.presentScene(menuScene, transition: reveal)
+            case nextlevel:
+                admin?.ShowNextLevel(self.size,levelnummer: levelnummer)
             default:
                 if(touchedNode is MySprite){
                     var node = touchedNode as! MySprite
@@ -514,6 +525,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
                         node.ParentSprite = nil
                     }
                 }
+                nextlevel.removeFromParent()
                 score.removeFromParent()
                 TimeUsed.removeFromParent()
                 BlockCount.removeFromParent()

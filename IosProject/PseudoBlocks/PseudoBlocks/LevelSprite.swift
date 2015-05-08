@@ -11,7 +11,6 @@ import SpriteKit
 
 class LevelSprite: SKSpriteNode {
     
-    var mymap: [[Int]]?
-    var intLevel = 0
+    var level : Level?
     
 }

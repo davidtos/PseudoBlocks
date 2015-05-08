@@ -39,7 +39,13 @@ class MenuScene: SKScene,SKPhysicsContactDelegate {
             
             if PlayButton == touchedNode{
                 generateMap()
-                let gameScene = GameScene(size: self.size,map: map)
+                var templevel = Level(map: [ [2,0,2,2,2,2],
+                    [2,0,2,2,2,2],
+                    [2,5,2,2,2,2],
+                    [2,1,4,4,0,2],
+                    [2,2,2,2,3,2],
+                    [2,2,2,2,0,2]],nummer: 0)
+                let gameScene = GameScene(size: self.size,level: templevel)
                 self.view?.presentScene(gameScene, transition: reveal)
             }
             else if LevelsButton == touchedNode {
