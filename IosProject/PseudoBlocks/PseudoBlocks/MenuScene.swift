@@ -90,7 +90,7 @@ class MenuScene: SKScene,SKPhysicsContactDelegate {
                     tiletype = TileType.grass
                     break;
                 case 1:
-                    tempSprite = MySprite(imageNamed: "GrassTile")
+                    tempSprite = MySprite(imageNamed: "DarkTile")
                     tiletype = TileType.spawn
                     break;
                 case 2:
@@ -110,8 +110,9 @@ class MenuScene: SKScene,SKPhysicsContactDelegate {
                     tiletype = TileType.animal
                     break;
                 case 6:
+                    println("endtile added")
                     tempSprite = MySprite(imageNamed: "EndTile")
-                    tiletype = TileType.grass
+                    tiletype = TileType.end
                     break;
                 default:
                     tempSprite = MySprite(imageNamed: "GrassTile")

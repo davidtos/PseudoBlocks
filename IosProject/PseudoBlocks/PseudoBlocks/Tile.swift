@@ -1,7 +1,7 @@
 import SpriteKit
 //the kinds of tiles that are available
 enum TileType: Int {
-    case grass = 1,spawn,wall,water,dust,animal
+    case grass = 1,spawn,wall,water,dust,animal,end
 }
 
 class Tile {

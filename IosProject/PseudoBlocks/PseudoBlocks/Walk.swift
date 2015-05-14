@@ -26,7 +26,7 @@ class Walk: Block {
             
         case WalkDirection.right:
             tile = player.scene.getTile(player.tile.column + 1, row: player.tile.row)!
-            if(tile.tileType == TileType.grass){
+            if(tile.tileType == TileType.grass || tile.tileType == TileType.end){
             player.scene.movePlayer(tile)
             }
             else {
@@ -37,7 +37,7 @@ class Walk: Block {
             break
         case WalkDirection.up:
             tile = player.scene.getTile(player.tile.column, row: player.tile.row + 1)!
-            if(tile.tileType == TileType.grass){
+            if(tile.tileType == TileType.grass || tile.tileType == TileType.end){
             player.scene.movePlayer(tile)
             }
             else {
@@ -48,7 +48,7 @@ class Walk: Block {
             break
         case WalkDirection.down:
             tile = player.scene.getTile(player.tile.column, row: player.tile.row - 1)!
-            if(tile.tileType == TileType.grass){
+            if(tile.tileType == TileType.grass || tile.tileType == TileType.end){
             player.scene.movePlayer(tile)
             }
             else {
@@ -59,7 +59,7 @@ class Walk: Block {
             break
         case WalkDirection.left:
             tile = player.scene.getTile(player.tile.column - 1, row: player.tile.row)!
-            if(tile.tileType == TileType.grass){
+            if(tile.tileType == TileType.grass || tile.tileType == TileType.end){
             player.scene.movePlayer(tile)
             }
             else {

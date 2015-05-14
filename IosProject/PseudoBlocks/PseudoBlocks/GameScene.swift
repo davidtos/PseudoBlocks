@@ -40,6 +40,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     var draaiFloat = CGPoint()
     var GeluidFloat = CGPoint()
     var spawnpoint = CGPoint()
+    var EndPoint = CGPoint()
     var count = 0
     let startTime = NSDate()
     var admin: Project?
@@ -333,6 +334,10 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
             if(tile.tileType == TileType.spawn){
                  spawnpoint = CGPoint(x:tile.column,y:tile.row)
             }
+            
+            if(tile.tileType == TileType.end){
+                EndPoint = CGPoint(x:tile.column,y:tile.row)
+            }
         }
     }
     
@@ -360,9 +365,22 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     
 	//move a player from its current node to a given node with a random duration for its movement
     func movePlayer(tile: Tile){
+        
         let actualDuration = random(min: CGFloat(2.0), max: CGFloat(4.0))
         var actionMove = SKAction.moveTo(tile.sprite.position , duration: NSTimeInterval(actualDuration))
         player.runAction(actionMove)
+        
+        println("tile : x\(tile.column) - y\(tile.row)  d\(tile.column.description)")
+        println("endpoint : x\(EndPoint.x) - y\(EndPoint.y)")
+        if( tile.column == Int(EndPoint.x) &&
+            tile.row == Int(EndPoint.y) )
+        {
+            // delay 3 seconds so player stands on the finishing tile
+            let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(3 * Double(NSEC_PER_SEC)))
+            dispatch_after(delayTime, dispatch_get_main_queue()) {
+            self.levelFinished()
+            }
+        }
     }
     
 	//catch a touch event and move a node 
@@ -438,7 +456,7 @@ class GameScene: SKScene,SKPhysicsContactDelegate {
     
     func StopPressed()
     {
-        levelFinished()
+        //levelFinished()
     }
     
     

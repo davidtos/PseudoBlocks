@@ -64,6 +64,10 @@ class Map {
                     tempSprite = MySprite(imageNamed: "AnimalTile")
                     tiletype = TileType.animal
                     break;
+                case 6:
+                    tempSprite = MySprite(imageNamed: "EndTile")
+                    tiletype = TileType.end
+                    break;
                 default:
                     tempSprite = MySprite(imageNamed: "GrassTile")
                     break;
