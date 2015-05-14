@@ -39,12 +39,13 @@ class MenuScene: SKScene,SKPhysicsContactDelegate {
             
             if PlayButton == touchedNode{
                 generateMap()
-                var templevel = Level(map: [ [2,0,2,2,2,2],
+                let lvl1 = [[2,2,2,2,2,2],
+                    [2,1,2,2,2,2],
                     [2,0,2,2,2,2],
-                    [2,5,2,2,2,2],
-                    [2,1,4,4,0,2],
-                    [2,2,2,2,3,2],
-                    [2,2,2,2,0,2]],nummer: 0)
+                    [2,0,0,0,0,2],
+                    [2,2,2,2,0,2],
+                    [2,2,2,2,2,2]]
+                var templevel = Level(map: lvl1,nummer: 1)
                 let gameScene = GameScene(size: self.size,level: templevel)
                 self.view?.presentScene(gameScene, transition: reveal)
             }
@@ -65,19 +66,19 @@ class MenuScene: SKScene,SKPhysicsContactDelegate {
         // 3 = water
         // 4 = dust
         // 5 = animal
-        var mymap: [[Int]] =  [ [2,0,2,2,2,2],
-                                [2,0,2,2,2,2],
-                                [2,5,2,2,2,2],
-                                [2,1,4,4,0,2],
-                                [2,2,2,2,3,2],
-                                [2,2,2,2,0,2]]
-        mymap = mymap.reverse()
+        var lvl1 = [[2,2,2,2,2,2],
+            [2,1,2,2,2,2],
+            [2,0,2,2,2,2],
+            [2,0,0,0,0,2],
+            [2,2,2,2,0,2],
+            [2,2,2,2,2,2]]
+        lvl1 = lvl1.reverse()
         
         var tempSprite = MySprite(imageNamed: "GrassTile")
         var tiletype = TileType.grass
         
         var rowid = 0
-        for row in mymap {
+        for row in lvl1 {
             
             var colid = 0
             for column in row {

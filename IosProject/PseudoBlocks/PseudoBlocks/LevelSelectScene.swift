@@ -6,6 +6,8 @@ class LevelSelectScene: SKScene,SKPhysicsContactDelegate {
     let BackButtonSprite = MySprite(imageNamed: "BackButton")
     let reveal = SKTransition.doorsCloseHorizontalWithDuration(0.5)
     
+    var levels :[[[Int]]]!
+    
     override func didMoveToView(view: SKView) {
         physicsWorld.gravity = CGVectorMake(0, 0)
         physicsWorld.contactDelegate = self
@@ -15,6 +17,7 @@ class LevelSelectScene: SKScene,SKPhysicsContactDelegate {
         background.position = CGPointMake(CGRectGetMidX(self.frame), CGRectGetMidY(self.frame))
         addChild(background)
         background.zPosition = -1
+        GenerateMaps()
         SetButtons()
         setLevels()
     }
@@ -45,12 +48,17 @@ class LevelSelectScene: SKScene,SKPhysicsContactDelegate {
             startPointWidth = BackButtonSprite.size.width  + tempPoint
             levelButtonSprite.position = CGPoint(x:startPointWidth , y: startPointHeigt - BackButtonSprite.size.width * 1.3)
             
+            
+            /*
             var tempLevel = Level(map:[[2,0,2,2,2,2],
                 [2,0,2,2,2,2],
                 [2,5,2,2,2,2],
                 [2,1,4,4,0,2],
                 [2,2,2,2,3,2],
-                [2,2,2,2,0,2]],nummer:i)
+                [2,2,2,2,0,2]],nummer:i)*/
+            
+            var CurLvl = levels[i-1]
+            var tempLevel = Level(map:CurLvl,nummer:i)
             
             levelButtonSprite.level = tempLevel
             
@@ -60,6 +68,44 @@ class LevelSelectScene: SKScene,SKPhysicsContactDelegate {
         
     }
     
+    // 0 = grass
+    // 1 = spawn
+    // 2 = wall
+    // 3 = water
+    // 4 = dust
+    // 5 = animal
+    func GenerateMaps(){
+        let lvl1 = [[2,2,2,2,2,2],
+                    [2,1,2,2,2,2],
+                    [2,0,2,2,2,2],
+                    [2,0,0,0,0,2],
+                    [2,2,2,2,0,2],
+                    [2,2,2,2,2,2]]
+        
+        let lvl2 = [[2,2,2,2,2,2],
+                    [2,2,2,2,1,2],
+                    [2,2,2,2,0,2],
+                    [2,0,5,0,0,2],
+                    [2,0,2,2,2,2],
+                    [2,2,2,2,2,2]]
+        
+        let lvl3 = [[2,2,2,2,2,2],
+                    [2,0,0,5,0,2],
+                    [2,4,2,2,0,2],
+                    [2,0,2,5,0,2],
+                    [2,1,2,0,2,2],
+                    [2,2,2,2,2,2]]
+        
+        let lvl4 = [[2,2,2,2,2,2],
+                    [2,1,2,2,2,2],
+                    [2,5,0,4,2,2],
+                    [2,0,2,0,2,2],
+                    [2,4,0,5,0,2],
+                    [2,2,2,2,2,2]]
+        
+        levels = [lvl1,lvl2,lvl3,lvl4]
+        
+    }
     
     override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         for touch: AnyObject in touches {
