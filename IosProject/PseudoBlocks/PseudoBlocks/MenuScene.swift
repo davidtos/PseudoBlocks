@@ -43,7 +43,7 @@ class MenuScene: SKScene,SKPhysicsContactDelegate {
                     [2,1,2,2,2,2],
                     [2,0,2,2,2,2],
                     [2,0,0,0,0,2],
-                    [2,2,2,2,0,2],
+                    [2,2,2,2,6,2],
                     [2,2,2,2,2,2]]
                 var templevel = Level(map: lvl1,nummer: 1)
                 let gameScene = GameScene(size: self.size,level: templevel)
@@ -66,11 +66,12 @@ class MenuScene: SKScene,SKPhysicsContactDelegate {
         // 3 = water
         // 4 = dust
         // 5 = animal
+        // 6 = end
         var lvl1 = [[2,2,2,2,2,2],
             [2,1,2,2,2,2],
             [2,0,2,2,2,2],
             [2,0,0,0,0,2],
-            [2,2,2,2,0,2],
+            [2,2,2,2,6,2],
             [2,2,2,2,2,2]]
         lvl1 = lvl1.reverse()
         
@@ -107,6 +108,10 @@ class MenuScene: SKScene,SKPhysicsContactDelegate {
                 case 5:
                     tempSprite = MySprite(imageNamed: "AnimalTile")
                     tiletype = TileType.animal
+                    break;
+                case 6:
+                    tempSprite = MySprite(imageNamed: "EndTile")
+                    tiletype = TileType.grass
                     break;
                 default:
                     tempSprite = MySprite(imageNamed: "GrassTile")
